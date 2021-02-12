@@ -1,6 +1,6 @@
 // 
 const setRules = () => {
-    const rule = {
+    const rule: Rule = {
         id: 1,
         priority: 1,
         action: {
@@ -19,6 +19,8 @@ const setRules = () => {
 
     chrome.declarativeNetRequest.updateDynamicRules({
         addRules: [ rule ]
+    }, () => {
+        console.log(this)
     })
 }
 
