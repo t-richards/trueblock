@@ -1,28 +1,24 @@
-// 
-const setRules = () => {
-    const rule: Rule = {
-        id: 1,
-        priority: 1,
-        action: {
-            type: "block"
-        },
-        condition: {
-            domains: [
-                "||youtube.com",
-            ]
-        }
+const rule: chrome.declarativeNetRequest.Rule = {
+    id: 123,
+    priority: 1,
+    action: {
+        type: "block"
+    },
+    condition: {
+        urlFilter: "||youtube.com"
     }
-
-    chrome.declarativeNetRequest.getAvailableStaticRuleCount((cnt) => {
-        console.log(cnt)
-    })
-
-    chrome.declarativeNetRequest.updateDynamicRules({
-        addRules: [ rule ]
-    }, () => {
-        console.log(this)
-    })
 }
 
-// Entrypoint
-chrome.runtime.onStartup.addListener(setRules)
+const checkError = () => {
+    if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError.message)
+    }
+}
+
+chrome.declarativeNetRequest.getAvailableStaticRuleCount((cnt) => {
+    console.log(cnt)
+})
+
+chrome.declarativeNetRequest.updateDynamicRules({
+    addRules: [rule]
+}, checkError)

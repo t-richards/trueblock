@@ -7,6 +7,6 @@
         "@types/chrome": "0.0.129"
     },
     "scripts": {
-        "build": "esbuild src/background.ts --bundle --minify --outfile=dist/background.js"
+        "build": "esbuild src/background.ts --bundle --format=esm --outfile=background.js"
     }
 }
