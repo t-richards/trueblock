@@ -1,12 +1,6 @@
 {
     "private": true,
-    "dependencies": {
-        "esbuild": "^0.8.43"
-    },
     "devDependencies": {
         "@types/chrome": "0.0.129"
-    },
-    "scripts": {
-        "build": "esbuild src/background.ts --bundle --format=esm --outfile=background.js"
     }
 }
