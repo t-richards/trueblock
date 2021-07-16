@@ -2,5 +2,11 @@
     "private": true,
     "devDependencies": {
         "@types/chrome": "0.0.129"
+    },
+    "dependencies": {
+        "esbuild": "^0.12.15"
+    },
+    "scripts": {
+        "build": "esbuild background.ts --bundle --outfile=dist/background.js"
     }
 }
