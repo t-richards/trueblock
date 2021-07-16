@@ -3,7 +3,7 @@
 
 <head>
   <title>Hello, World!</title>
-  <link rel="stylesheet" type="text/css" href="milligram.min.css">
+  <link rel="stylesheet" type="text/css" href="app.css">
 </head>
 
 <body>
@@ -11,13 +11,19 @@
     <h1>Block a website</h1>
 
     <form>
-      <label for="domain">Domain</label>
-      <input type="text" id="domain" name="domain" placeholder="example.com">
+      <div class="form-row">
+        <label for="domain">Domain</label>
+        <input type="text" id="domain" name="domain" placeholder="example.com">
+      </div>
 
-      <label for="note">Note</label>
-      <textarea rows="25" cols="80" id="note" name="note" placeholder="Unbelievably scummy advertisements"></textarea>
+      <div class="form-row">
+        <label for="note">Note</label>
+        <textarea rows="10" cols="40" id="note" name="note" placeholder="Unbelievably scummy advertisements"></textarea>
+      </div>
 
-      <input class="button-primary" type="submit" value="Block">
+      <div class="form-row">
+        <input class="button-primary" type="submit" value="Block">
+      </div>
     </form>
   </div>
 </body>

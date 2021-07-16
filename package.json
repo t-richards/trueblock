@@ -4,8 +4,7 @@
         "@types/chrome": "0.0.146"
     },
     "dependencies": {
-        "esbuild": "^0.12.15",
-        "milligram": "^1.4.1"
+        "esbuild": "^0.12.15"
     },
     "scripts": {
         "build": "esbuild src/background.ts --bundle --minify --outfile=dist/background.js",
