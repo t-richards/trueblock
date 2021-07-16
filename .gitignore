@@ -1,2 +1,2 @@
-dist/*
-!dist/manifest.json
+dist/*.js
+dist/*.zip
