@@ -1,6 +1,12 @@
 body {
     font-family: sans-serif;
     font-size: large;
+    color: white;
+    background-color: #424242;
+}
+
+input {
+    font-size: large;
 }
 
 label {
