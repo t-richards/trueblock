@@ -4,10 +4,14 @@
         "@types/chrome": "0.0.146"
     },
     "dependencies": {
-        "esbuild": "^0.12.15"
+        "esbuild": "^0.12.15",
+        "idb": "^6.1.2",
+        "preact": "^10.5.14"
     },
     "scripts": {
-        "build": "esbuild src/background.ts --bundle --minify --outfile=dist/background.js",
+        "background": "esbuild src/background.ts --bundle --minify --outfile=dist/background.js",
+        "popup": "esbuild src/popup.ts --bundle --minify --outfile=dist/popup.js",
+        "build": "npm run background && npm run popup",
         "dist": "npm run clean && npm run build && npm run pack",
         "clean": "rm -f dist/*.js dist/*.zip",
         "pack": "cd dist && zip -r package.zip *"

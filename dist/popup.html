@@ -10,7 +10,7 @@
   <div class="container">
     <h1>Block a website</h1>
 
-    <form>
+    <form id="block-new-site">
       <div class="form-row">
         <label for="domain">Domain</label>
         <input type="text" id="domain" name="domain" placeholder="example.com">
@@ -20,7 +20,8 @@
         <label for="note">Note</label>
         <textarea rows="10" cols="40" id="note" name="note" placeholder="e.g.,
 - Dark patterns
-- Heavy advertisements
+- Horrible attitude
+- Thick advertisements
 - Scummy business model
 - Whiny tone"></textarea>
       </div>
@@ -30,6 +31,8 @@
       </div>
     </form>
   </div>
+
+  <script src="popup.js"></script>
 </body>
 
 </html>

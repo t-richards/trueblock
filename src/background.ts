@@ -2,7 +2,7 @@ const rule: chrome.declarativeNetRequest.Rule = {
   id: 123,
   priority: 1,
   action: {
-    type: chrome.declarativeNetRequest.RuleActionType.BLOCK,
+    type: "block",
   },
   condition: {
     urlFilter: "||youtube.com"
