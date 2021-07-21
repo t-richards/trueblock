@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "esnext"
+    "target": "esnext",
+    "jsx": "react-jsx",
+    "jsxFactory": "h"
   },
   "exclude": [
     "node_modules",
