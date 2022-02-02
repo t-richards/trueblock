@@ -1,2 +1,6 @@
+# Dev
+node_modules/
+
+# Dist
 dist/*.js
 dist/*.zip

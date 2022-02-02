@@ -1,12 +1,12 @@
 {
     "private": true,
     "devDependencies": {
-        "@types/chrome": "0.0.146"
+        "@types/chrome": "0.0.177"
     },
     "dependencies": {
-        "esbuild": "^0.12.15",
-        "idb": "^6.1.2",
-        "preact": "^10.5.14"
+        "esbuild": "^0.14.18",
+        "idb": "^7.0.0",
+        "preact": "^10.6.5"
     },
     "scripts": {
         "background": "esbuild src/background.ts --bundle --minify --outfile=dist/background.js",
