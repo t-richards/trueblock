@@ -10,6 +10,7 @@
         "default_title": "Ethical Blocker",
         "default_popup": "popup.html"
     },
+    "options_page": "options.html",
     "permissions": [
         "declarativeNetRequest"
     ],

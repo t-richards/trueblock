@@ -9,9 +9,8 @@
         "preact": "^10.6.5"
     },
     "scripts": {
-        "background": "esbuild src/background.ts --bundle --minify --outfile=dist/background.js",
-        "popup": "esbuild src/popup.ts --bundle --minify --outfile=dist/popup.js",
-        "build": "npm run background && npm run popup",
+        "build": "esbuild src/background.ts src/popup.ts src/options.ts --bundle --minify --outdir=dist",
+        "start": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --outdir=dist --watch",
         "dist": "npm run clean && npm run build && npm run pack",
         "clean": "rm -f dist/*.js dist/*.zip",
         "pack": "cd dist && zip -r package.zip *"

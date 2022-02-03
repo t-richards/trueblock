@@ -3,7 +3,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "esnext",
-    "jsx": "react-jsx",
+    "jsx": "react",
     "jsxFactory": "h"
   },
   "exclude": [

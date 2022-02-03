@@ -1,6 +1,6 @@
 import { h, render } from 'preact'
 
-import { BlockSite } from './components/BlockSite'
+import OptionsPage from './components/OptionsPage'
 
 const app = document.getElementById('app')
-render(BlockSite, app)
+render(<OptionsPage />, app)
