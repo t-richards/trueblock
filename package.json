@@ -1,18 +1,22 @@
 {
-    "private": true,
-    "devDependencies": {
-        "@types/chrome": "0.0.177"
-    },
-    "dependencies": {
-        "esbuild": "^0.14.18",
-        "idb": "^7.0.0",
-        "preact": "^10.6.5"
-    },
-    "scripts": {
-        "build": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --minify --outdir=dist",
-        "start": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --watch --outdir=dist",
-        "dist": "npm run clean && npm run build && npm run pack",
-        "clean": "rm -f dist/*.js dist/*.zip",
-        "pack": "cd dist && zip -r package.zip *"
-    }
+  "private": true,
+  "devDependencies": {
+    "@types/chrome": "0.0.177",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "eslint": "^8.8.0",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "esbuild": "^0.14.18",
+    "preact": "^10.6.5"
+  },
+  "scripts": {
+    "build": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --minify --outdir=dist",
+    "start": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --watch --outdir=dist",
+    "dist": "npm run clean && npm run build && npm run pack",
+    "clean": "rm -f dist/*.js dist/*.zip",
+    "pack": "cd dist && zip -r package.zip *",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  }
 }
