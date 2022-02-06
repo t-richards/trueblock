@@ -1,30 +1,51 @@
 import { h, render } from 'preact'
+import { useState, useEffect } from 'preact/hooks'
 
-const Popup = () => (
-    <div class="container">
-        <h1>Block a website</h1>
+const Popup = () => {
+    // Initially, set the domain field based on the current tab
+    const [domain, setDomain] = useState("")
+    useEffect(() => {
+        chrome
+            .tabs
+            .query({ active: true })
+            .then(tabs => setDomain(tabs[0].url))
+    }, [])
 
-        <form id="block-new-site">
-            <div class="form-row">
-                <label for="domain">Domain</label>
-                <input type="text" id="domain" name="domain" placeholder="example.com" />
-            </div>
+    // Handle user input from the domain field
+    const handleDomainInput = (evt: Event) => {
+        const target = evt.target as HTMLInputElement
+        setDomain(target.value)
+    }
 
-            <div class="form-row">
-                <label for="note">Note</label>
-                <textarea rows={10} cols={40} id="note" name="note" placeholder="e.g.,
+    return (
+        <div class="container">
+            <h2>Block this website</h2>
+
+            <form id="block-new-site">
+                <fieldset>
+                    <label for="domain">Domain</label>
+                    <input type="text" id="domain" name="domain" placeholder="example.com"
+                        value={domain}
+                        onInput={handleDomainInput}
+                        />
+                </fieldset>
+
+                <fieldset>
+                    <label for="note">Note</label>
+                    <textarea rows={10} cols={40} id="note" name="note" placeholder="e.g.,
 - Dark patterns
 - Horrible attitude
 - Thick advertisements
 - Scummy business model
 - Whiny tone"></textarea>
-            </div>
+                </fieldset>
 
-            <div class="form-row">
-                <input class="button-primary" type="submit" value="Add site to blocklist" />
-            </div>
-        </form>
-    </div>
-)
+                <fieldset>
+                    <input class="button-primary" type="submit" value="Add site to blocklist" />
+                </fieldset>
+            </form>
+        </div>
+    )
+}
 
 export default Popup

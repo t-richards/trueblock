@@ -12,7 +12,8 @@
     },
     "options_page": "options.html",
     "permissions": [
-        "declarativeNetRequest"
+        "declarativeNetRequest",
+        "tabs"
     ],
     "host_permissions": [
         "*://*/*"
