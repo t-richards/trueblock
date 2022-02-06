@@ -1,5 +1,5 @@
 
-interface BlockedSite {
+export interface BlockedSite {
   domain: string
   note: string
   enabled: boolean
