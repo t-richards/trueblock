@@ -1,4 +1,4 @@
-import { h, render } from 'preact'
+import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 
 const Popup = () => {
@@ -37,7 +37,7 @@ const Popup = () => {
 - Horrible attitude
 - Thick advertisements
 - Scummy business model
-- Whiny tone"></textarea>
+- Whiny tone" />
         </fieldset>
 
         <fieldset>

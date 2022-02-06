@@ -1,5 +1,8 @@
 module.exports = {
   root: true,
+  env: {
+    webextensions: true
+  },
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',
@@ -7,5 +10,11 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'preact'
   ],
-};
+  settings: {
+    jest: {
+      version: 'latest'
+    }
+  }
+}
