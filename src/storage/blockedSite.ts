@@ -1,5 +1,6 @@
 
 export interface BlockedSite {
+  id: number
   domain: string
   note: string
   enabled: boolean
