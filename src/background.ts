@@ -14,7 +14,7 @@ chrome.storage.sync.get(null, (items) => {
         type: "block",
       },
       condition: {
-        urlFilter: "||${site.domain}"
+        urlFilter: `||${site.domain}`
       }
     }
 

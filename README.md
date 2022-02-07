@@ -1,15 +1,31 @@
 # Ethical Blocker
 
-The ethical :tm: website blocker which reminds you why you blocked a site.
+The ethical :tm: website blocker which blocks websites and reminds you why you blocked them.
 
 This blocking utility is a heavy-handed, paint-with-a-broad-brush blocker whose purpose is to block entire domains. If you want more fine-grained blocking options, we suggest you use uBlock Origin instead.
 
-# Roadmap
+## Install
 
-- [ ] Options page to create / edit / delete rules
-- [ ] Popover to create a new site
-- [ ] Popover to remind you of an existing site
+<a href="https://chrome.google.com/webstore/detail/ethical-blocker/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get Ethical Blocker for Chrome"></a>
 
-# License
+## For Developers
+
+System requirements:
+
+ - NPM `~> 8.4`
+
+Dev workflow:
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Run build watcher
+npm run start
+
+# 3. Load the unpacked extension from the "dist" directory
+```
+
+## License
 
 Copyright (c) 2022 Tom Richards

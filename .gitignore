@@ -3,4 +3,5 @@ node_modules/
 
 # Dist
 dist/*.js
+dist/*.map
 dist/*.zip

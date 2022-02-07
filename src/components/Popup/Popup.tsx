@@ -26,12 +26,7 @@ const Popup = () => {
   }
 
   const handleFormSubmit = () => {
-    const site: BlockedSite = {
-      domain,
-      note,
-      enabled: true
-    }
-    updateSite(site)
+    updateSite(domain, note)
   }
 
   return (
