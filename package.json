@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --minify --outdir=dist",
-    "start": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --sourcemap --watch --outdir=dist",
+    "start": "esbuild src/background.ts src/popup.tsx src/options.tsx --bundle --sourcemap=inline --watch --outdir=dist",
     "dist": "npm run clean && npm run build && npm run pack",
     "clean": "rm -f dist/*.js dist/*.zip",
     "pack": "cd dist && zip -r package.zip *",
