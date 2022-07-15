@@ -1,3 +1,2 @@
-css: npm run css:dev
-js: npm run js:dev
+build: npm run build:dev
 tsc: npm run tsc

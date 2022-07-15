@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { BlockedSite, updateSite } from '../../storage/blockedSite'
+import { h } from 'preact'
+import { useState, useEffect } from 'preact/hooks'
+import { updateSite } from '../../storage/blockedSite'
 
 const Popup = () => {
   const [domain, setDomain] = useState("")
@@ -14,12 +15,12 @@ const Popup = () => {
   }, [])
 
   // Handle user input from the domain field
-  const handleDomainInput = (evt: React.FormEvent) => {
+  const handleDomainInput = (evt: Event) => {
     const target = evt.target as HTMLInputElement
     setDomain(target.value)
   }
 
-  const handleNoteInput = (evt: React.FormEvent) => {
+  const handleNoteInput = (evt: Event) => {
     const target = evt.target as HTMLInputElement
     setNote(target.value)
   }
