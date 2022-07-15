@@ -1,4 +1,3 @@
-
 export const RULES_KEY = 'rules'
 
 export interface BlockedSite {

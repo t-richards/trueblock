@@ -5,7 +5,7 @@
     "target": "esnext",
     "jsx": "react",
     "jsxFactory": "h",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
   },
   "exclude": [
     "node_modules",

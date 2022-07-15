@@ -1,5 +1,6 @@
 import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
+
 import { updateSite } from '../../storage/blockedSite'
 
 const Popup = () => {

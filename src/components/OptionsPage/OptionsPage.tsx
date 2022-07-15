@@ -1,15 +1,20 @@
 import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
+
 import { BlockedSite, RULES_KEY } from '../../storage/blockedSite'
 
 const OptionsPage = () => {
   const [rules, setRules] = useState<BlockedSite[]>([])
   useEffect(() => {
-    chrome.storage.sync.get([RULES_KEY], (items) => {
-      if (items[RULES_KEY]?.length) {
-        setRules(items as BlockedSite[])
-      }
-    })
+    chrome
+      .storage
+      .sync
+      .get([RULES_KEY])
+      .then((items) => {
+        if (items[RULES_KEY]?.length) {
+          setRules(items as BlockedSite[])
+        }
+      })
   }, [])
 
   return (
