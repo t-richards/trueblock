@@ -7,6 +7,7 @@
     "esbuild": "^0.14.49",
     "eslint": "^8.19.0",
     "eslint-config-preact": "^1.3.0",
+    "eslint-plugin-json": "^3.1.0",
     "typescript": "^4.7.4"
   },
   "dependencies": {
@@ -19,7 +20,29 @@
     "dist": "npm run clean && npm run build && npm run pack",
     "clean": "rm -f dist/*.js dist/*.css dist/*.zip",
     "pack": "cd dist && zip -r package.zip *",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.json,.ts,.tsx",
     "tsc": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "webextensions": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "json"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:json/recommended",
+      "preact"
+    ],
+    "settings": {
+      "jest": {
+        "version": "latest"
+      }
+    }
   }
 }
