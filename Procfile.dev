@@ -1,0 +1,3 @@
+css: npm run css:dev
+js: npm run js:dev
+tsc: npm run tsc
