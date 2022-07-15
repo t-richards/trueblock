@@ -1,5 +1,4 @@
-import { h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
+import React, { useState, useEffect } from 'react'
 import { BlockedSite, updateSite } from '../../storage/blockedSite'
 
 const Popup = () => {
@@ -15,12 +14,12 @@ const Popup = () => {
   }, [])
 
   // Handle user input from the domain field
-  const handleDomainInput = (evt: Event) => {
+  const handleDomainInput = (evt: React.FormEvent) => {
     const target = evt.target as HTMLInputElement
     setDomain(target.value)
   }
 
-  const handleNoteInput = (evt: Event) => {
+  const handleNoteInput = (evt: React.FormEvent) => {
     const target = evt.target as HTMLInputElement
     setNote(target.value)
   }
@@ -30,12 +29,12 @@ const Popup = () => {
   }
 
   return (
-    <div class="container">
+    <div className="container">
       <h2>Block this website</h2>
 
       <form id="block-a-site" onSubmit={handleFormSubmit}>
         <fieldset>
-          <label for="domain">Domain</label>
+          <label htmlFor="domain">Domain</label>
           <input
             type="text"
             id="domain"
@@ -47,7 +46,7 @@ const Popup = () => {
         </fieldset>
 
         <fieldset>
-          <label for="note">Note</label>
+          <label htmlFor="note">Note</label>
           <textarea
             rows={10}
             cols={40}
@@ -64,7 +63,7 @@ const Popup = () => {
         </fieldset>
 
         <fieldset>
-          <input class="button-primary" type="submit" value="Add site to blocklist" />
+          <input className="button-primary" type="submit" value="Add site to blocklist" />
         </fieldset>
       </form>
     </div>

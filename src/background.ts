@@ -11,7 +11,7 @@ chrome.storage.sync.get(null, (items) => {
       id: site.id,
       priority: 1,
       action: {
-        type: "block",
+        type: chrome.declarativeNetRequest.RuleActionType.BLOCK,
       },
       condition: {
         urlFilter: `||${site.domain}`

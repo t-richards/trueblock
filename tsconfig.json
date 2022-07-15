@@ -3,8 +3,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "esnext",
-    "jsx": "react",
-    "jsxFactory": "h"
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "node_modules",

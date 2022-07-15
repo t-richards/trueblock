@@ -1,6 +1,8 @@
-import { h, render } from 'preact'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 
 import OptionsPage from './components/OptionsPage'
 
 const app = document.getElementById('app')
-render(<OptionsPage />, app)
+const root = createRoot(app)
+root.render(<OptionsPage />)

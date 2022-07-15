@@ -12,16 +12,17 @@ This blocking utility is a heavy-handed, paint-with-a-broad-brush blocker whose 
 
 System requirements:
 
- - NPM `~> 8.4`
+ - Node.js with NPM `~> 8.14`
+ - [Overmind](https://github.com/DarthSim/overmind)
 
-Dev workflow:
+Getting started:
 
 ```bash
 # 1. Install dependencies
 npm install
 
 # 2. Run build watcher
-npm run start
+bin/dev
 
 # 3. Load the unpacked extension from the "dist" directory
 ```

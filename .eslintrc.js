@@ -10,7 +10,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'preact'
+    'react'
   ],
   settings: {
     jest: {
