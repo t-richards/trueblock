@@ -2,7 +2,7 @@ import { h, Fragment } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 
 import { BlockRuleStorage, clearStorage, deleteRule, fetchRules, updateRule } from '../../storage/blockRules'
-import TrashOutline from '../../icons/TrashOutline'
+import { TrashIcon } from '../../icons/outline'
 
 const OptionsPage = () => {
   const [rules, setRules] = useState<BlockRuleStorage>({})
@@ -60,7 +60,7 @@ const OptionsPage = () => {
                     </th>
                     <td>{rule.domain}</td>
                     <td>{rule.note}</td>
-                    <td><button class="outline contrast"><TrashOutline /></button></td>
+                    <td><button class="outline contrast"><TrashIcon /></button></td>
                   </tr>
                 ))}
               </tbody>
