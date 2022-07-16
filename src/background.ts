@@ -1,4 +1,4 @@
-import { BlockedSite } from "./storage/blockedSite"
+import { BlockRule } from "./storage/blockRules"
 
 // first get all rules from storage
 chrome.storage.sync.get(null, (rules) => {
@@ -6,7 +6,7 @@ chrome.storage.sync.get(null, (rules) => {
 
   // for all rules
   for (const k of keys) {
-    const site = rules[k] as BlockedSite
+    const site = rules[k] as BlockRule
     const rule: chrome.declarativeNetRequest.Rule = {
       id: site.id,
       priority: 1,

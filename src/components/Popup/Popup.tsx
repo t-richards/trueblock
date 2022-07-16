@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 
-import { updateSite } from '../../storage/blockedSite'
+import { updateRule } from '../../storage/blockRules'
 
 const Popup = () => {
   const [domain, setDomain] = useState("")
@@ -27,7 +27,7 @@ const Popup = () => {
   }
 
   const handleFormSubmit = () => {
-    updateSite(domain, note)
+    updateRule(domain, note)
   }
 
   return (
