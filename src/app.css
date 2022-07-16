@@ -1,1 +1,11 @@
 @import '@picocss/pico/css/pico.classless.css';
+
+.icon {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/* Extras borrowed from docs page */
+a[role=button] {
+    margin-right: calc(var(--spacing) * .5);
+}

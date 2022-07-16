@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 
-import { updateRule } from '../../storage/blockRules'
+import { fetchRule, updateRule } from '../../storage/blockRules'
 
 const Popup = () => {
   const [domain, setDomain] = useState("")
@@ -9,10 +9,13 @@ const Popup = () => {
 
   // Initially, set the domain field based on the current tab
   useEffect(() => {
-    chrome
-      .tabs
-      .query({ active: true })
-      .then(tabs => setDomain(tabs[0].url))
+    // Get the current tab domain
+    const tabs = await chrome.tabs.query({ active: true })
+    const domain = tabs[0].url
+    setDomain(domain)
+
+    // Check if a rule for the domain exists in storage
+    const rule = await fetchRule(domain)
   }, [])
 
   // Handle user input from the domain field
@@ -31,12 +34,12 @@ const Popup = () => {
   }
 
   return (
-    <div className="container">
+    <main class="container">
       <h2>Block this website</h2>
 
       <form id="block-a-site" onSubmit={handleFormSubmit}>
         <fieldset>
-          <label htmlFor="domain">Domain</label>
+          <label for="domain">Domain</label>
           <input
             type="text"
             id="domain"
@@ -48,7 +51,7 @@ const Popup = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="note">Note</label>
+          <label for="note">Note</label>
           <textarea
             rows={10}
             cols={40}
@@ -65,10 +68,10 @@ const Popup = () => {
         </fieldset>
 
         <fieldset>
-          <input className="button-primary" type="submit" value="Add site to blocklist" />
+          <input class="button-primary" type="submit" value="Add site to blocklist" />
         </fieldset>
       </form>
-    </div>
+    </main>
   )
 }
 
