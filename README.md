@@ -29,4 +29,4 @@ bin/dev
 
 ## License
 
-Copyright (c) 2022 Tom Richards
+Copyright (c) 2022 Tom Richards. All rights reserved.
