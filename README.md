@@ -8,7 +8,9 @@ This extension is a heavy-handed blocker whose purpose is to block entire domain
 
 UI
  - [x] Popup page -> sync storage
- - [ ] Sync storage -> popup page
+ - [x] Sync storage -> popup page
+ - Validation states
+ - Saved notification
 
 UI
  - [x] Options page -> sync storage

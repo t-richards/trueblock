@@ -11,11 +11,11 @@ const Popup = () => {
     (async () => {
       // Get the current tab domain
       const tabs = await chrome.tabs.query({ active: true })
-      const domain = tabs[0].url
-      setDomain(domain)
+      const { hostname } = new URL(tabs[0].url)
+      setDomain(hostname)
 
       // Find existing rule for this domain
-      const rule = await fetchRule(domain)
+      const rule = await fetchRule(hostname)
       if (rule !== null) {
         setNote(rule.note)
       }
@@ -47,7 +47,7 @@ const Popup = () => {
             type="text"
             id="domain"
             name="domain"
-            placeholder="example.com"
+            placeholder="example.net"
             value={domain}
             onInput={handleDomainInput}
             required
