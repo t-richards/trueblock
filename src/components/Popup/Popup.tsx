@@ -14,8 +14,11 @@ const Popup = () => {
       const domain = tabs[0].url
       setDomain(domain)
 
-      // Check if a rule for the domain exists in storage
+      // Find existing rule for this domain
       const rule = await fetchRule(domain)
+      if (rule !== null) {
+        setNote(rule.note)
+      }
     })()
   }, [])
 
@@ -31,7 +34,7 @@ const Popup = () => {
   }
 
   const handleFormSubmit = () => {
-    // TODO(tom): Update the rule in storage
+    updateRule
   }
 
   return (

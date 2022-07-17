@@ -1,11 +1,25 @@
 import { h, Fragment } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 
-import { BlockRule, BlockRuleStorage, clearStorage, deleteRule, fetchAllRules, updateRule } from '../../storage/blockRules'
-import { getNextID } from '../../storage/sequence'
+import { BlockRuleStorage, clearStorage, deleteRule, fetchAllRules, updateRule } from '../../storage/blockRules'
 import { TrashIcon } from '../../icons/outline'
 
 const OptionsPage = () => {
+  // New rule form
+  const [domain, setDomain] = useState('')
+  const [note, setNote] = useState('')
+
+  const handleDomainInput = (evt: Event) => {
+    const target = evt.target as HTMLInputElement
+    setDomain(target.value)
+  }
+
+  const handleNoteInput = (evt: Event) => {
+    const target = evt.target as HTMLInputElement
+    setNote(target.value)
+  }
+
+  // Rules storage
   const [rules, setRules] = useState<BlockRuleStorage>({})
   useEffect(() => {
     (async () => {
@@ -14,69 +28,66 @@ const OptionsPage = () => {
     })()
   }, [])
 
-  // TODO(tom): Handle when a rule already exists with the same domain
   const handleAdd = async () => {
-    const newRule: BlockRule = {
-      id: await getNextID(),
-      domain: 'example.com',
-      note: 'aaa',
-      enabled: true
-    }
-    await updateRule('example.com', newRule)
+    const newRule = await updateRule(domain, note)
     setRules({ ...rules, [newRule.domain]: newRule })
   }
 
-  const handleDelete = () => {
-    deleteRule('example.com')
+  const handleDelete = async (domain: string) => {
+    await deleteRule(domain)
+    const newRules = { ...rules }
+    delete newRules[domain]
+    setRules(newRules)
   }
 
   const handleClearStorage = () => {
     clearStorage()
+    setRules({})
   }
 
   return (
-    <>
-      <header>
-        <hgroup>
-          <h1>Debug Options</h1>
-          <h2>Some cool things for testing.</h2>
-        </hgroup>
-        <section>
-          <a href="#" role="button" onClick={handleAdd}>Add Test Rule</a>
-          <a href="#" role="button" onClick={handleDelete}>Delete Test Rule</a>
-          <a href="#" role="button" onClick={handleClearStorage}>Clear Storage</a>
-        </section>
-      </header>
-      <main>
-        <section>
-          <h2>Blocked Sites</h2>
-          <figure>
-            <table role="grid">
-              <thead>
-                <tr>
-                  <th scope="col">Enabled</th>
-                  <th scope="col">Domain</th>
-                  <th scope="col">Note</th>
-                  <th scope="col">Actions</th>
+    <main class="container">
+      <section>
+        <h2>Block a new site</h2>
+        <form>
+          <fieldset>
+            <label for="domain">Domain</label>
+            <input type="text" id="domain" name="domain" placeholder="example.com" value={domain} onInput={handleDomainInput} />
+            <label for="note">Note</label>
+            <input type="text" id="note" name="note" placeholder="aaaaa" value={note} onInput={handleNoteInput} />
+            <a href="#" role="button" onClick={handleAdd}>Add Rule</a>
+            <a href="#" role="button" class="outline contrast" onClick={handleClearStorage}>Clear Storage</a>
+          </fieldset>
+        </form>
+      </section>
+      <section>
+        <h2>Blocked sites</h2>
+        <figure>
+          <table role="grid">
+            <thead>
+              <tr>
+                <th scope="col">Enabled</th>
+                <th scope="col">Domain</th>
+                <th scope="col">Note</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(rules).map(([_domain, rule]) => (
+                <tr id={`row_${rule.id}`} key={rule.id}>
+                  <th scope="row">
+                    <input type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} />
+                  </th>
+                  <td>{rule.domain}</td>
+                  <td>{rule.note}</td>
+                  <td><button class="outline contrast action" onClick={() => handleDelete(rule.domain)}><TrashIcon /></button></td>
                 </tr>
-              </thead>
-              <tbody>
-                {Object.entries(rules).map(([domain, rule]) => (
-                  <tr id={`row_${rule.id}`} key={rule.id}>
-                    <th scope="row">
-                      <input type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} />
-                    </th>
-                    <td>{rule.domain}</td>
-                    <td>{rule.note}</td>
-                    <td><button class="outline contrast"><TrashIcon /></button></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </figure>
-        </section>
-      </main>
-    </>
+              ))}
+            </tbody>
+          </table>
+        </figure>
+      </section>
+    </main>
   )
 }
 

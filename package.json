@@ -9,9 +9,9 @@
   },
   "scripts": {
     "build": "esbuild src/background.ts src/popup.tsx src/options.tsx src/app.css --bundle --minify --legal-comments=none --outdir=dist",
-    "build:dev": "esbuild src/background.ts src/popup.tsx src/options.tsx src/app.css --bundle --sourcemap=inline --watch --outdir=dist",
+    "build:dev": "esbuild src/background.ts src/popup.tsx src/options.tsx src/app.css --bundle --sourcemap --watch --outdir=dist",
     "dist": "npm run clean && npm run build && npm run pack",
-    "clean": "rm -f dist/*.js dist/*.css dist/*.zip",
+    "clean": "rm -f dist/*.js dist/*.css dist/*.map dist/*.zip",
     "pack": "cd dist && zip -r package.zip *",
     "tsc": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
   }
