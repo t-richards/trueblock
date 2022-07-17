@@ -1,12 +1,12 @@
-# Ethical Blocker
+# TrueBlock
 
-The ethical :tm: website blocker which blocks websites and reminds you why you blocked them.
+The simple website blocker which blocks websites and reminds you why you blocked them.
 
-This blocking utility is a heavy-handed, paint-with-a-broad-brush blocker whose purpose is to block entire domains. If you want more fine-grained blocking options, we suggest you use uBlock Origin instead.
+This blocking utility is a heavy-handed blocker whose purpose is to block entire domains. If you want more granular blocking control, we recommend using a different tool.
 
 ## Install
 
-<a href="https://chrome.google.com/webstore/detail/ethical-blocker/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get Ethical Blocker for Chrome"></a>
+<a href="https://chrome.google.com/webstore/detail/ethical-blocker/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get TrueBlock for Chrome"></a>
 
 ## For Developers
 

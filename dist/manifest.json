@@ -1,13 +1,13 @@
 {
-    "name": "Ethical Blocker",
-    "description": "The ethical site blocker.",
+    "name": "TrueBlock",
+    "description": "The simple website blocker.",
     "version": "0.7.0",
     "manifest_version": 3,
     "background": {
         "service_worker": "background.js"
     },
     "action": {
-        "default_title": "Ethical Blocker",
+        "default_title": "TrueBlock",
         "default_popup": "popup.html"
     },
     "options_page": "options.html",
