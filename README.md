@@ -6,7 +6,7 @@ This blocking utility is a heavy-handed blocker whose purpose is to block entire
 
 ## Install
 
-<a href="https://chrome.google.com/webstore/detail/ethical-blocker/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get TrueBlock for Chrome"></a>
+<a href="https://chrome.google.com/webstore/detail/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get TrueBlock for Chrome"></a>
 
 ## For Developers
 
