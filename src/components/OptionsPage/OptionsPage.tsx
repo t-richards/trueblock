@@ -28,9 +28,12 @@ const OptionsPage = () => {
     })()
   }, [])
 
-  const handleAdd = async () => {
+  const handleNewSiteSubmit = async (evt: Event) => {
+    evt.preventDefault()
     const newRule = await updateRule(domain, note)
     setRules({ ...rules, [newRule.domain]: newRule })
+    setDomain('')
+    setNote('')
   }
 
   const handleDelete = async (domain: string) => {
@@ -44,13 +47,13 @@ const OptionsPage = () => {
     <main class="container">
       <section>
         <h2>Block a new site</h2>
-        <form>
+        <form onSubmit={handleNewSiteSubmit}>
           <fieldset>
             <label for="domain">Domain</label>
             <input type="text" id="domain" name="domain" placeholder="example.com" value={domain} onInput={handleDomainInput} />
             <label for="note">Note</label>
             <input type="text" id="note" name="note" placeholder="aaaaa" value={note} onInput={handleNoteInput} />
-            <a href="#" role="button" onClick={handleAdd}>Add Rule</a>
+            <button type="submit">Add Rule</button>
           </fieldset>
         </form>
       </section>
