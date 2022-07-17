@@ -58,8 +58,3 @@ export async function updateRule(domain: string, note: string) {
 export async function deleteRule(domain: string) {
   return chrome.storage.sync.remove(domain)
 }
-
-// Deletes all storage for the extension.
-export async function clearStorage() {
-  return chrome.storage.sync.clear()
-}

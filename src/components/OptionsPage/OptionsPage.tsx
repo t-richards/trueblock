@@ -1,7 +1,7 @@
-import { h, Fragment } from 'preact'
+import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 
-import { BlockRuleStorage, clearStorage, deleteRule, fetchAllRules, updateRule } from '../../storage/blockRules'
+import { BlockRuleStorage, deleteRule, fetchAllRules, updateRule } from '../../storage/blockRules'
 import { TrashIcon } from '../../icons/outline'
 
 const OptionsPage = () => {
@@ -40,11 +40,6 @@ const OptionsPage = () => {
     setRules(newRules)
   }
 
-  const handleClearStorage = () => {
-    clearStorage()
-    setRules({})
-  }
-
   return (
     <main class="container">
       <section>
@@ -56,7 +51,6 @@ const OptionsPage = () => {
             <label for="note">Note</label>
             <input type="text" id="note" name="note" placeholder="aaaaa" value={note} onInput={handleNoteInput} />
             <a href="#" role="button" onClick={handleAdd}>Add Rule</a>
-            <a href="#" role="button" class="outline contrast" onClick={handleClearStorage}>Clear Storage</a>
           </fieldset>
         </form>
       </section>
