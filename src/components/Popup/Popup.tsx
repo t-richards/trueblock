@@ -7,15 +7,16 @@ const Popup = () => {
   const [domain, setDomain] = useState("")
   const [note, setNote] = useState("")
 
-  // Initially, set the domain field based on the current tab
   useEffect(() => {
-    // Get the current tab domain
-    const tabs = await chrome.tabs.query({ active: true })
-    const domain = tabs[0].url
-    setDomain(domain)
+    (async () => {
+      // Get the current tab domain
+      const tabs = await chrome.tabs.query({ active: true })
+      const domain = tabs[0].url
+      setDomain(domain)
 
-    // Check if a rule for the domain exists in storage
-    const rule = await fetchRule(domain)
+      // Check if a rule for the domain exists in storage
+      const rule = await fetchRule(domain)
+    })()
   }, [])
 
   // Handle user input from the domain field
@@ -30,12 +31,12 @@ const Popup = () => {
   }
 
   const handleFormSubmit = () => {
-    updateRule(domain, note)
+    // TODO(tom): Update the rule in storage
   }
 
   return (
     <main class="container">
-      <h2>Block this website</h2>
+      <h3>Block this website</h3>
 
       <form id="block-a-site" onSubmit={handleFormSubmit}>
         <fieldset>
@@ -53,7 +54,7 @@ const Popup = () => {
         <fieldset>
           <label for="note">Note</label>
           <textarea
-            rows={10}
+            rows={5}
             cols={40}
             id="note"
             name="note"
@@ -61,10 +62,8 @@ const Popup = () => {
             onInput={handleNoteInput}
             placeholder="e.g.,
 - Dark patterns
-- Horrible attitude
-- Thick advertisements
-- Scummy business model
-- Whiny tone" />
+- Sketchy advertisements
+- Scummy business model" />
         </fieldset>
 
         <fieldset>

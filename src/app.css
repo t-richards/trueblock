@@ -1,5 +1,10 @@
 @import '@picocss/pico/css/pico.classless.css';
 
+.popup {
+    width: 600px;
+    height: 600px;
+}
+
 .icon {
     height: 1.5rem;
     width: 1.5rem;

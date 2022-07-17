@@ -1,7 +1,9 @@
 import { BlockRule } from "./storage/blockRules"
+import { ID_SEQUENCE_KEY } from "./storage/sequence"
 
 // first get all rules from storage
 chrome.storage.sync.get(null, (rules) => {
+  delete rules[ID_SEQUENCE_KEY]
   const keys = Object.keys(rules)
 
   // for all rules
@@ -9,7 +11,6 @@ chrome.storage.sync.get(null, (rules) => {
     const site = rules[k] as BlockRule
     const rule: chrome.declarativeNetRequest.Rule = {
       id: site.id,
-      priority: 1,
       action: {
         type: chrome.declarativeNetRequest.RuleActionType.BLOCK
       },

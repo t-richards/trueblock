@@ -29,6 +29,7 @@ export async function fetchRule(domain: string): Promise<BlockRule> {
 }
 
 // Saves a single block rule to storage.
+// TODO(tom): Handle existing rules
 export async function updateRule(domain: string, rule: BlockRule) {
   return chrome.storage.sync.set({ [domain]: rule })
 }
