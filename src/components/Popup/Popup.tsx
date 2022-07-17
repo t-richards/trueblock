@@ -22,7 +22,6 @@ const Popup = () => {
     })()
   }, [])
 
-  // Handle user input from the domain field
   const handleDomainInput = (evt: Event) => {
     const target = evt.target as HTMLInputElement
     setDomain(target.value)
@@ -33,8 +32,8 @@ const Popup = () => {
     setNote(target.value)
   }
 
-  const handleFormSubmit = () => {
-    updateRule
+  const handleFormSubmit = async () => {
+    await updateRule(domain, note)
   }
 
   return (
@@ -51,11 +50,12 @@ const Popup = () => {
             placeholder="example.com"
             value={domain}
             onInput={handleDomainInput}
+            required
             />
         </fieldset>
 
         <fieldset>
-          <label for="note">Note</label>
+          <label for="note">Note (Optional)</label>
           <textarea
             rows={5}
             cols={40}
@@ -70,7 +70,7 @@ const Popup = () => {
         </fieldset>
 
         <fieldset>
-          <input class="button-primary" type="submit" value="Add site to blocklist" />
+          <input class="strong" type="submit" value="Add site to blocklist" />
         </fieldset>
       </form>
     </main>
