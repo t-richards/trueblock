@@ -36,6 +36,11 @@ const OptionsPage = () => {
     setNote('')
   }
 
+  // table
+  const handleChange = async (domain: string) => {
+    // TODO(tom): this
+  }
+
   const handleDelete = async (domain: string) => {
     await deleteRule(domain)
     const newRules = { ...rules }
@@ -75,7 +80,7 @@ const OptionsPage = () => {
               {Object.entries(rules).map(([_domain, rule]) => (
                 <tr id={`row_${rule.id}`} key={rule.id}>
                   <th scope="row">
-                    <input type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} />
+                    <input type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} onChange={() => handleChange(rule.domain)} />
                   </th>
                   <td>{rule.domain}</td>
                   <td>{rule.note}</td>

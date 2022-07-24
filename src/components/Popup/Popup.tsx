@@ -32,7 +32,8 @@ const Popup = () => {
     setNote(target.value)
   }
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (evt: Event) => {
+    evt.preventDefault()
     await updateRule(domain, note)
   }
 
