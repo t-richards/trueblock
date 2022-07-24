@@ -1,13 +1,13 @@
 import { getNextID, ID_SEQUENCE_KEY } from './sequence'
 
-export interface BlockRule {
+export type BlockRule = {
   id: number
   domain: string
   note: string
   enabled: boolean
 }
 
-export interface BlockRuleStorage {
+export type BlockRuleStorage = {
   [domain: string]: BlockRule
 }
 
