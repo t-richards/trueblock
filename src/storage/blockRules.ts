@@ -29,7 +29,7 @@ export async function fetchRule(domain: string): Promise<BlockRule | null> {
 }
 
 // Saves a single block rule to storage.
-export async function updateRule(domain: string, note: string) {
+export async function updateRule(domain: string, note: string, enabled: boolean) {
   // Check if the rule exists.
   const existingRule = await fetchRule(domain)
   let id = null
@@ -44,7 +44,7 @@ export async function updateRule(domain: string, note: string) {
     id,
     domain,
     note,
-    enabled: true
+    enabled
   }
 
   // Save the rule.

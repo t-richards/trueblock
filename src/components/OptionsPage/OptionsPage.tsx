@@ -30,18 +30,26 @@ const OptionsPage = () => {
 
   const handleNewSiteSubmit = async (evt: Event) => {
     evt.preventDefault()
-    const newRule = await updateRule(domain, note)
+    const newRule = await updateRule(domain, note, true)
     setRules({ ...rules, [newRule.domain]: newRule })
     setDomain('')
     setNote('')
   }
 
   // table
-  const handleChange = async (domain: string) => {
-    // TODO(tom): this
+  const handleToggle = async (evt: Event) => {
+    const target = evt.currentTarget as HTMLInputElement
+    const domain = target.dataset.domain
+    const newRules = { ...rules }
+    newRules[domain].enabled = !newRules[domain].enabled
+
+    await updateRule(domain, newRules[domain].note, newRules[domain].enabled)
+    setRules(newRules)
   }
 
-  const handleDelete = async (domain: string) => {
+  const handleDelete = async (evt: Event) => {
+    const target = evt.currentTarget as HTMLButtonElement
+    const domain = target.dataset.domain
     await deleteRule(domain)
     const newRules = { ...rules }
     delete newRules[domain]
@@ -80,11 +88,11 @@ const OptionsPage = () => {
               {Object.entries(rules).map(([_domain, rule]) => (
                 <tr id={`row_${rule.id}`} key={rule.id}>
                   <th scope="row">
-                    <input type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} onChange={() => handleChange(rule.domain)} />
+                    <input data-domain={rule.domain} type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} onChange={handleToggle} />
                   </th>
                   <td>{rule.domain}</td>
                   <td>{rule.note}</td>
-                  <td><button class="outline contrast action" onClick={() => handleDelete(rule.domain)}><TrashIcon /></button></td>
+                  <td><button data-domain={rule.domain} class="outline contrast action" onClick={handleDelete}><TrashIcon /></button></td>
                 </tr>
               ))}
             </tbody>
