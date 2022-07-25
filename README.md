@@ -7,17 +7,11 @@ This extension is a heavy-handed blocker whose purpose is to block entire domain
 ## Roadmap
 
 UI
- - [x] Popup page -> sync storage
- - [x] Sync storage -> popup page
  - [ ] Validation states
- - [ ] Saved notification
-
-UI
- - [x] Options page -> sync storage
- - [ ] Sync storage -> options page
+ - [ ] Successfully added notification
+ - [ ] Successfully saved notification
 
 Background
- - [ ] Sync storage -> declarativeNetRequest rules
  - [ ] Storage changes -> declarativeNetRequest rules
 
 ## Install

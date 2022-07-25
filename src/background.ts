@@ -1,7 +1,7 @@
 import { BlockRuleStorage } from "./storage/blockRules"
 import { ID_SEQUENCE_KEY } from "./storage/sequence"
 
-const newRule = (id: number, domain: string): chrome.declarativeNetRequest.Rule => {
+const dnrBlockRule = (id: number, domain: string): chrome.declarativeNetRequest.Rule => {
   return {
     id: id,
     action: {
@@ -19,8 +19,8 @@ const addRemainingRules = async (
 ) => {
   const rulesToAdd: chrome.declarativeNetRequest.Rule[] = []
   for (const [domain, rule] of Object.entries(desiredRules)) {
-    if (existingRules.find(r => r.id === rule.id) === undefined) {
-      rulesToAdd.push(newRule(rule.id, domain))
+    if (existingRules.find(r => r.id === rule.id) === undefined && rule.enabled) {
+      rulesToAdd.push(dnrBlockRule(rule.id, domain))
     }
   }
 
