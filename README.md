@@ -6,10 +6,8 @@ This extension is a heavy-handed blocker whose purpose is to block entire domain
 
 ## Roadmap
 
-UI
- - [ ] Validation states
- - [ ] Successfully added notification
- - [ ] Successfully saved notification
+Service worker
+ - [ ] Consider implementing a more granular storage change handler
 
 ## Install
 
