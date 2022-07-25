@@ -13,7 +13,6 @@
     "options_page": "options.html",
     "permissions": [
         "declarativeNetRequest",
-        "declarativeNetRequestFeedback",
         "tabs",
         "storage"
     ]
