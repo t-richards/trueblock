@@ -76,6 +76,11 @@ const applyRulesDiff = async (
   storageRules: BlockRuleStorage,
   existingRules: chrome.declarativeNetRequest.Rule[]
 ) => {
+  // debug
+  console.log('Applying rules from storage...')
+  console.log('Storage rules: ', storageRules)
+  console.log('Existing rules: ', existingRules)
+
   // delete rules that are no longer in storage
   deleteUnusedRules(storageRules, existingRules)
 
