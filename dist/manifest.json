@@ -12,8 +12,8 @@
     },
     "options_page": "options.html",
     "permissions": [
+        "activeTab",
         "declarativeNetRequest",
-        "tabs",
         "storage"
     ]
 }
