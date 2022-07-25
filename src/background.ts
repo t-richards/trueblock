@@ -68,16 +68,7 @@ const applyRulesDiff = async (
   addRemainingRules(storageRules, existingRules)
 }
 
-const handleGranularStorageChange = async (changes: object, _areaName: string) => {
-  console.log('Storage changes detected: ', changes)
-}
-
-// Main registers event handlers and runs the initial synchronization
-// between storage and the declarativeNetRequest rules.
-const main = async () => {
-  // register event listeners
-  chrome.storage.onChanged.addListener(handleGranularStorageChange)
-
+const doBigSync = async () => {
   // first get all rules from storage
   const desiredRules = await chrome.storage.sync.get() as BlockRuleStorage
   delete desiredRules[ID_SEQUENCE_KEY]
@@ -87,6 +78,22 @@ const main = async () => {
 
   // handle which rules already exist and which ones to update
   await applyRulesDiff(desiredRules, existingRules)
+}
+
+const handleGranularStorageChange = async (changes: object, _areaName: string) => {
+  console.log('Storage changes detected: ', changes)
+
+  // heavy-weight sync
+  await doBigSync()
+}
+
+// Main registers event handlers and runs the initial synchronization
+// between storage and the declarativeNetRequest rules.
+const main = async () => {
+  // register event listeners
+  chrome.storage.onChanged.addListener(handleGranularStorageChange)
+
+  await doBigSync()
 }
 
 // entry point
