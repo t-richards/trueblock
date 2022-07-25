@@ -6,6 +6,9 @@ This extension is a heavy-handed blocker whose purpose is to block entire domain
 
 ## Roadmap
 
+General
+ - [ ] Add tests :)
+
 Service worker
  - [ ] Consider implementing a more granular storage change handler
 
