@@ -8,7 +8,22 @@ const dnrBlockRule = (id: number, domain: string): chrome.declarativeNetRequest.
       type: chrome.declarativeNetRequest.RuleActionType.BLOCK
     },
     condition: {
-      urlFilter: `||${domain}`
+      requestDomains: [domain],
+      resourceTypes: [
+        chrome.declarativeNetRequest.ResourceType.MAIN_FRAME,
+        chrome.declarativeNetRequest.ResourceType.SUB_FRAME,
+        chrome.declarativeNetRequest.ResourceType.STYLESHEET,
+        chrome.declarativeNetRequest.ResourceType.SCRIPT,
+        chrome.declarativeNetRequest.ResourceType.IMAGE,
+        chrome.declarativeNetRequest.ResourceType.FONT,
+        chrome.declarativeNetRequest.ResourceType.OBJECT,
+        chrome.declarativeNetRequest.ResourceType.XMLHTTPREQUEST,
+        chrome.declarativeNetRequest.ResourceType.PING,
+        chrome.declarativeNetRequest.ResourceType.CSP_REPORT,
+        chrome.declarativeNetRequest.ResourceType.MEDIA,
+        chrome.declarativeNetRequest.ResourceType.WEBSOCKET,
+        chrome.declarativeNetRequest.ResourceType.OTHER
+      ]
     }
   }
 }
@@ -92,6 +107,9 @@ const handleGranularStorageChange = async (changes: object, _areaName: string) =
 const main = async () => {
   // register event listeners
   chrome.storage.onChanged.addListener(handleGranularStorageChange)
+  chrome.declarativeNetRequest.setExtensionActionOptions({
+    displayActionCountAsBadgeText: true
+  })
 
   await doBigSync()
 }

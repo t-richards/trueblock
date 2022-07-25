@@ -11,9 +11,6 @@ UI
  - [ ] Successfully added notification
  - [ ] Successfully saved notification
 
-Background
- - [ ] Storage changes -> declarativeNetRequest rules
-
 ## Install
 
 <a href="https://chrome.google.com/webstore/detail/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get TrueBlock for Chrome"></a>
