@@ -121,3 +121,6 @@ const main = async () => {
 
 // entry point
 main()
+
+// exports for testing
+export { doBigSync }
