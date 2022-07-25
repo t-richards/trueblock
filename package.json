@@ -3,7 +3,7 @@
   "devDependencies": {
     "@picocss/pico": "^1.5.3",
     "@types/chrome": "^0.0.193",
-    "esbuild": "^0.14.49",
+    "esbuild": "^0.14.50",
     "preact": "^10.10.0",
     "typescript": "^4.7.4"
   },
