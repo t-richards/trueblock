@@ -7,6 +7,8 @@ This extension is a heavy-handed blocker whose purpose is to block entire domain
 ## Roadmap
 
 General
+ - [ ] Form validation states
+ - [ ] Strip subdomain(s) on popup page
  - [ ] Add tests :)
 
 Service worker
@@ -14,7 +16,7 @@ Service worker
 
 ## Install
 
-<a href="https://chrome.google.com/webstore/detail/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get TrueBlock for Chrome"></a>
+<a href="https://chrome.google.com/webstore/detail/trueblock/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get TrueBlock for Chrome"></a>
 
 ## Usage
 

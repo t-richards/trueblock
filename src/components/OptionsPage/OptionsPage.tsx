@@ -68,7 +68,7 @@ const OptionsPage = () => {
           <fieldset>
             <label for="note">Note</label>
             <input type="text" id="note" name="note" placeholder="I do not like this website" value={note} onInput={handleNoteInput} />
-            <button type="submit">Add Rule</button>
+            <button type="submit">Add site to blocklist</button>
           </fieldset>
         </form>
       </section>
