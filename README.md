@@ -1,6 +1,6 @@
 # TrueBlock
 
-The simple website blocker which blocks websites and reminds you why you blocked them.
+The simple website blocker which blocks websites and helps you remember why you blocked them.
 
 This extension is a heavy-handed blocker whose purpose is to block entire domains. If you want more granular blocking control, we recommend using a different tool.
 
@@ -28,10 +28,13 @@ Then, click the extension icon (`T` for "TrueBlock") next to the address bar to 
 
 The popup page will show the domain of the current tab. This is the domain that will be blocked.
 
-Optionally, you may enter a reason for blocking the domain. In the future, the extension will show a notification when the domain is blocked, and it will show you this reason to help you remember why you blocked it.
+Optionally, you may enter a reason for blocking the domain. 
 
 Finally, click the "Add site to blocklist" button to block the domain.
 
+You can visit the extension options page to view this note later, to remind yourself why you blocked the domain. Right-click the extension icon, then select "Options".
+
+![Extension options](https://user-images.githubusercontent.com/3905798/181120139-872647f6-262d-49bd-9de4-968376111f10.png)
 
 ## For Developers
 

@@ -59,20 +59,6 @@ const OptionsPage = () => {
   return (
     <main class="container">
       <section>
-        <h2>Block a new site</h2>
-        <form onSubmit={handleNewSiteSubmit}>
-          <fieldset>
-            <label for="domain">Domain</label>
-            <input type="text" id="domain" name="domain" placeholder="example.net" value={domain} onInput={handleDomainInput} />
-          </fieldset>
-          <fieldset>
-            <label for="note">Note</label>
-            <input type="text" id="note" name="note" placeholder="I do not like this website" value={note} onInput={handleNoteInput} />
-            <button type="submit">Add site to blocklist</button>
-          </fieldset>
-        </form>
-      </section>
-      <section>
         <h2>Blocked sites</h2>
         <figure>
           <table role="grid">
@@ -98,6 +84,20 @@ const OptionsPage = () => {
             </tbody>
           </table>
         </figure>
+      </section>
+      <section>
+        <h2>Block a new site</h2>
+        <form onSubmit={handleNewSiteSubmit}>
+          <fieldset>
+            <label for="domain">Domain</label>
+            <input type="text" id="domain" name="domain" placeholder="example.net" value={domain} onInput={handleDomainInput} />
+          </fieldset>
+          <fieldset>
+            <label for="note">Note</label>
+            <input type="text" id="note" name="note" placeholder="I do not like this website" value={note} onInput={handleNoteInput} />
+            <button type="submit">Add site to blocklist</button>
+          </fieldset>
+        </form>
       </section>
     </main>
   )
