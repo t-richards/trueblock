@@ -1,4 +1,5 @@
 # Dev
+coverage/
 node_modules/
 
 # Dist

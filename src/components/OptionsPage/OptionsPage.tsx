@@ -74,7 +74,7 @@ const OptionsPage = () => {
               {Object.entries(rules).map(([_domain, rule]) => (
                 <tr id={`row_${rule.id}`} key={rule.id}>
                   <th scope="row">
-                    <input data-domain={rule.domain} type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} onChange={handleToggle} />
+                    <input data-domain={rule.domain} type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} onClick={handleToggle} />
                   </th>
                   <td>{rule.domain}</td>
                   <td>{rule.note}</td>

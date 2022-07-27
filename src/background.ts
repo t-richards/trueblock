@@ -88,7 +88,7 @@ const applyRulesDiff = async (
   addRemainingRules(storageRules, existingRules)
 }
 
-const doBigSync = async () => {
+const syncStorageToDnr = async () => {
   // first get all rules from storage
   const desiredRules = await chrome.storage.sync.get() as BlockRuleStorage
   delete desiredRules[ID_SEQUENCE_KEY]
@@ -104,7 +104,7 @@ const handleGranularStorageChange = async (changes: object, _areaName: string) =
   console.log('Storage changes detected: ', changes)
 
   // heavy-weight sync
-  await doBigSync()
+  await syncStorageToDnr()
 }
 
 // Main registers event handlers and runs the initial synchronization
@@ -116,11 +116,13 @@ const main = async () => {
     displayActionCountAsBadgeText: true
   })
 
-  await doBigSync()
+  await syncStorageToDnr()
 }
 
 // entry point
-main()
+if (globalThis.constructor.name === 'ServiceWorkerGlobalScope') {
+  main()
+}
 
 // exports for testing
-export { doBigSync }
+export { syncStorageToDnr }
