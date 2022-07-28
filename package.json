@@ -41,6 +41,9 @@
       "text"
     ],
     "preset": "ts-jest",
+    "setupFilesAfterEnv": [
+      "./src/setupTests.ts"
+    ],
     "testEnvironment": "node",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
