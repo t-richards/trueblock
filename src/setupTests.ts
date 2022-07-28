@@ -31,7 +31,8 @@ global.beforeEach(() => {
       storage: {
         sync: {
           get: jest.fn(async () => ({})), // empty storage
-          set: jest.fn()
+          set: jest.fn(),
+          remove: jest.fn()
         }
       },
       declarativeNetRequest: {

@@ -78,7 +78,7 @@ const OptionsPage = () => {
                   </th>
                   <td>{rule.domain}</td>
                   <td>{rule.note}</td>
-                  <td><button data-domain={rule.domain} class="outline contrast action" onClick={handleDelete}><TrashIcon /></button></td>
+                  <td><button aria-label="Delete" data-domain={rule.domain} class="outline contrast action" onClick={handleDelete}><TrashIcon /></button></td>
                 </tr>
               ))}
             </tbody>
