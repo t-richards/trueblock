@@ -76,11 +76,6 @@ const applyRulesDiff = async (
   storageRules: BlockRuleStorage,
   existingRules: chrome.declarativeNetRequest.Rule[]
 ) => {
-  // debug
-  console.log('Applying rules from storage...')
-  console.log('Storage rules: ', storageRules)
-  console.log('Existing rules: ', existingRules)
-
   // delete rules that are no longer in storage
   deleteUnusedRules(storageRules, existingRules)
 
@@ -100,18 +95,11 @@ const syncStorageToDnr = async () => {
   await applyRulesDiff(desiredRules, existingRules)
 }
 
-const handleGranularStorageChange = async (changes: object, _areaName: string) => {
-  console.log('Storage changes detected: ', changes)
-
-  // heavy-weight sync
-  await syncStorageToDnr()
-}
-
 // Main registers event handlers and runs the initial synchronization
 // between storage and the declarativeNetRequest rules.
 const main = async () => {
   // register event listeners
-  chrome.storage.onChanged.addListener(handleGranularStorageChange)
+  chrome.storage.onChanged.addListener(syncStorageToDnr)
   chrome.declarativeNetRequest.setExtensionActionOptions({
     displayActionCountAsBadgeText: true
   })
