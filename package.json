@@ -27,6 +27,7 @@
     "tsc": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
   },
   "jest": {
+    "clearMocks": true,
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}"
