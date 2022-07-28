@@ -58,7 +58,7 @@ const OptionsPage = () => {
 
   return (
     <main class="container">
-      <section>
+      <section name="Blocked Sites">
         <h2>Blocked sites</h2>
         <figure>
           <table role="grid">
@@ -85,7 +85,7 @@ const OptionsPage = () => {
           </table>
         </figure>
       </section>
-      <section>
+      <section name="Block a new site">
         <h2>Block a new site</h2>
         <form onSubmit={handleNewSiteSubmit}>
           <fieldset>

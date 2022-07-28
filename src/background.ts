@@ -1,5 +1,5 @@
-import { BlockRuleStorage } from "./storage/blockRules"
-import { ID_SEQUENCE_KEY } from "./storage/sequence"
+import { BlockRuleStorage } from './storage/blockRules'
+import { ID_SEQUENCE_KEY } from './storage/sequence'
 
 const dnrBlockRule = (id: number, domain: string): chrome.declarativeNetRequest.Rule => {
   return {

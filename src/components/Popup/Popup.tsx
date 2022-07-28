@@ -4,8 +4,8 @@ import { useState, useEffect } from 'preact/hooks'
 import { fetchRule, updateRule } from '../../storage/blockRules'
 
 const Popup = () => {
-  const [domain, setDomain] = useState("")
-  const [note, setNote] = useState("")
+  const [domain, setDomain] = useState('')
+  const [note, setNote] = useState('')
 
   useEffect(() => {
     (async () => {
