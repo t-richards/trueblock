@@ -31,7 +31,7 @@ const ResourceType = {
 const TrueblockChromeMock = {
   chrome: {
     tabs: {
-      query: jest.fn(() => []) // no tabs
+      query: jest.fn(async () => []) // no tabs
     },
     storage: {
       sync: {
@@ -43,7 +43,7 @@ const TrueblockChromeMock = {
     declarativeNetRequest: {
       RuleActionType,
       ResourceType,
-      getDynamicRules: jest.fn(async () => ([])), // empty DNR rules
+      getDynamicRules: jest.fn(async () => []), // empty DNR rules
       updateDynamicRules: jest.fn()
     }
   }
