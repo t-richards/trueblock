@@ -24,7 +24,8 @@
     "build:dev": "esbuild src/background.ts src/popup.tsx src/options.tsx src/app.css --bundle --sourcemap --watch --outdir=dist",
     "dist": "npm run clean && npm run build && npm run pack",
     "clean": "rm -f dist/*.js dist/*.css dist/*.map dist/*.zip",
-    "lint": "eslint . --ext .ts,.tsx --fix",
+    "lint": "eslint --ext .ts,.tsx --fix .",
+    "lint:ci": "eslint --ext .ts,.tsx .",
     "pack": "cd dist && zip -r trueblock.zip *",
     "test": "jest --coverage=true",
     "tsc": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
@@ -76,6 +77,10 @@
           "argsIgnorePattern": "^_",
           "varsIgnorePattern": "^h$"
         }
+      ],
+      "indent": [
+        "error",
+        2
       ],
       "quotes": [
         "error",

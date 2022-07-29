@@ -52,7 +52,7 @@ const Popup = () => {
             value={domain}
             onInput={handleDomainInput}
             required
-            />
+          />
         </fieldset>
 
         <fieldset>
