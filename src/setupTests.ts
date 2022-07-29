@@ -25,27 +25,32 @@ const ResourceType = {
   XMLHTTPREQUEST: 'xmlhttprequest'
 }
 
-global.beforeEach(() => {
-  Object.assign(global, {
-    chrome: {
-      tabs: {
-        query: jest.fn(() => []) // no tabs
-      },
-      storage: {
-        sync: {
-          get: jest.fn(async () => ({})), // empty storage
-          set: jest.fn(),
-          remove: jest.fn()
-        }
-      },
-      declarativeNetRequest: {
-        RuleActionType,
-        ResourceType,
-        getDynamicRules: jest.fn(async () => ([])), // empty DNR rules
-        updateDynamicRules: jest.fn()
+// n.b. packages like chrome-mock, chrome-jest-mock, jest-chrome, etc.
+// are not suitable for our tests because they are too outdated and/or
+// do not provide the subset of chrome APIs we need.
+const TrueblockChromeMock = {
+  chrome: {
+    tabs: {
+      query: jest.fn(() => []) // no tabs
+    },
+    storage: {
+      sync: {
+        get: jest.fn(async () => ({})), // empty storage
+        set: jest.fn(),
+        remove: jest.fn()
       }
+    },
+    declarativeNetRequest: {
+      RuleActionType,
+      ResourceType,
+      getDynamicRules: jest.fn(async () => ([])), // empty DNR rules
+      updateDynamicRules: jest.fn()
     }
-  })
+  }
+}
+
+global.beforeEach(() => {
+  Object.assign(global, TrueblockChromeMock)
 })
 
 global.afterEach(() => {
