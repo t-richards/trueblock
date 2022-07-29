@@ -28,6 +28,9 @@ const ResourceType = {
 global.beforeEach(() => {
   Object.assign(global, {
     chrome: {
+      tabs: {
+        query: jest.fn(() => []) // no tabs
+      },
       storage: {
         sync: {
           get: jest.fn(async () => ({})), // empty storage
