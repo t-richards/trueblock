@@ -25,7 +25,7 @@
     "dist": "npm run clean && npm run build && npm run pack",
     "clean": "rm -f dist/*.js dist/*.css dist/*.map dist/*.zip",
     "lint": "eslint . --ext .ts,.tsx --fix",
-    "pack": "cd dist && zip -r package.zip *",
+    "pack": "cd dist && zip -r trueblock.zip *",
     "test": "jest --coverage=true",
     "tsc": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
   },
