@@ -5,7 +5,7 @@ import OptionsPage from './OptionsPage'
 
 const stubRules = (count: number) => {
   const rules = {}
-  for(let i = 0; i < count; i++) {
+  for (let i = 0; i < count; i++) {
     const domain = `example${i}.net`
     rules[domain] = {
       id: i,
@@ -21,7 +21,7 @@ const stubRules = (count: number) => {
 }
 
 describe('OptionsPage', () => {
-  it('renders two headings', () => {
+  it('renders the component with no data', () => {
     const { getByRole } = render(<OptionsPage />)
 
     expect(getByRole('heading', { name: 'Blocked sites' })).toBeInTheDocument()
