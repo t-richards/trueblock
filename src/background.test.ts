@@ -11,12 +11,9 @@ describe('sync storage to declarativeNetRequest', () => {
 
   describe('with one new item in storage', () => {
     it('creates one new DNR rule', async () => {
-      chrome.storage.sync.get = jest.fn(async () => {
-        // One rule in storage
-        return {
-          'example.net': { id: 3, enabled: true }
-        }
-      })
+      chrome.storage.sync.get = jest.fn(async () => ({
+        'example.net': { id: 3, enabled: true }
+      }))
 
       await syncStorageToDnr()
 
@@ -32,6 +29,26 @@ describe('sync storage to declarativeNetRequest', () => {
           ])
         })
       )
+    })
+  })
+
+  describe('with one existing DNR rule that matches storage', () => {
+    it('does nothing', async () => {
+      chrome.storage.sync.get = jest.fn(async () => ({
+        'example.net': { id: 3, enabled: true }
+      }))
+
+      chrome.declarativeNetRequest.getDynamicRules = jest.fn(async () => [{
+        id: 3,
+        action: {
+          type: chrome.declarativeNetRequest.RuleActionType.BLOCK
+        },
+        condition: { requestDomains: ['example.net'] }
+      }])
+
+      await syncStorageToDnr()
+
+      expect(chrome.declarativeNetRequest.updateDynamicRules).not.toHaveBeenCalled()
     })
   })
 })
