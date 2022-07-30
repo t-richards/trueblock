@@ -1,5 +1,5 @@
-import { BlockRuleStorage } from './storage/blockRules'
-import { ID_SEQUENCE_KEY } from './storage/sequence'
+import { BlockRuleStorage } from '../storage/blockRules'
+import { ID_SEQUENCE_KEY } from '../storage/sequence'
 
 const dnrBlockRule = (id: number, domain: string): chrome.declarativeNetRequest.Rule => {
   return {
@@ -93,23 +93,6 @@ const syncStorageToDnr = async () => {
 
   // handle which rules already exist and which ones to update
   await applyRulesDiff(desiredRules, existingRules)
-}
-
-// Main registers event handlers and runs the initial synchronization
-// between storage and the declarativeNetRequest rules.
-const main = async () => {
-  // register event listeners
-  chrome.storage.onChanged.addListener(syncStorageToDnr)
-  chrome.declarativeNetRequest.setExtensionActionOptions({
-    displayActionCountAsBadgeText: true
-  })
-
-  await syncStorageToDnr()
-}
-
-// entry point
-if (globalThis.constructor.name === 'ServiceWorkerGlobalScope') {
-  main()
 }
 
 // exports for testing

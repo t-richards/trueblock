@@ -1,4 +1,4 @@
-import { syncStorageToDnr } from './background'
+import { syncStorageToDnr } from './index'
 
 describe('sync storage to declarativeNetRequest', () => {
   describe('with no items in storage', () => {

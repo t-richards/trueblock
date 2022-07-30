@@ -4,7 +4,7 @@
   "version": "0.7.2",
   "manifest_version": 3,
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "worker.js"
   },
   "action": {
     "default_title": "TrueBlock",
