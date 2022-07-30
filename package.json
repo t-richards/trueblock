@@ -27,7 +27,7 @@
     "lint": "eslint --ext .ts,.tsx --fix .",
     "lint:ci": "eslint --ext .ts,.tsx .",
     "pack": "cd dist && zip -r trueblock.zip *",
-    "test": "jest --coverage=true",
+    "test": "jest --coverage=true --runInBand",
     "tsc": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
   },
   "jest": {

@@ -51,4 +51,22 @@ describe('sync storage to declarativeNetRequest', () => {
       expect(chrome.declarativeNetRequest.updateDynamicRules).not.toHaveBeenCalled()
     })
   })
+
+  describe('with one existing DNR rule and empty storage', () => {
+    it('removes the unused rule', async () => {
+      chrome.declarativeNetRequest.getDynamicRules = jest.fn(async () => [{
+        id: 3,
+        action: {
+          type: chrome.declarativeNetRequest.RuleActionType.BLOCK
+        },
+        condition: { requestDomains: ['example.net'] }
+      }])
+
+      await syncStorageToDnr()
+
+      expect(chrome.declarativeNetRequest.updateDynamicRules).toHaveBeenCalledWith({
+        removeRuleIds: [ 3 ]
+      })
+    })
+  })
 })
