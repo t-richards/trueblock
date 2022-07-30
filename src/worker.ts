@@ -1,4 +1,4 @@
-import { syncStorageToDnr } from "./background"
+import { syncStorageToDnr } from './background'
 
 // Registers event handlers and runs the initial synchronization
 // between storage and the declarativeNetRequest rules.
