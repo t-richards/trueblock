@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { render } from '@testing-library/preact'
 
-import Popup from './Popup'
+import Popup from './'
 
 const stubOneTab = (url: string) => {
   chrome.tabs.query = jest.fn(async () => {

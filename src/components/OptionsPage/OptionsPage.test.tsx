@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { render, fireEvent, waitFor } from '@testing-library/preact'
 
-import OptionsPage from './OptionsPage'
+import OptionsPage from './'
 
 const stubRules = (count: number) => {
   const rules = {}
