@@ -4,16 +4,6 @@ The simple website blocker which blocks websites and helps you remember why you 
 
 This extension is a heavy-handed blocker whose purpose is to block entire domains. If you want more granular blocking control, we recommend using a different tool.
 
-## Roadmap
-
-General
- - [ ] Form validation states
- - [ ] Strip subdomain(s) on popup page
- - [ ] Add tests :)
-
-Service worker
- - [ ] Consider implementing a more granular storage change handler
-
 ## Install
 
 <a href="https://chrome.google.com/webstore/detail/trueblock/adcbggkgllkljeliabhgmmkmpebhdbno"><img src="https://user-images.githubusercontent.com/3905798/152878025-69a67c54-755c-4581-bc73-a99a70dd267d.png" alt="Get TrueBlock for Chrome"></a>
@@ -61,6 +51,12 @@ Getting started:
 
     https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked
 
+## Roadmap
+
+General
+ - [ ] Form validation states
+ - [ ] Add tests :)
+ - [ ] Mutation tests
 
 ## License
 
