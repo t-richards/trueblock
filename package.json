@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@picocss/pico": "^1.5.3",
-    "esbuild": "^0.14.50",
+    "esbuild": "^0.15.8",
     "preact": "^10.10.0"
   },
   "scripts": {
