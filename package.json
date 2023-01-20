@@ -6,6 +6,7 @@
     "@testing-library/preact": "^3.2",
     "@types/chrome": "^0.0.209",
     "@types/jest": "^29.2",
+    "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.48",
     "@typescript-eslint/parser": "^5.48",
     "eslint": "^8.32",
@@ -53,14 +54,20 @@
         "functions": 60
       }
     },
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
     "preset": "ts-jest",
     "setupFilesAfterEnv": [
-      "./src/setupTests.ts"
+      "<rootDir>/src/setupTests.ts"
     ],
     "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.tsx?$": [
-        "ts-jest"
+        "ts-jest",
+        {
+          "useESM": true
+        }
       ]
     }
   },

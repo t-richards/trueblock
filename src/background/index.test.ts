@@ -1,3 +1,5 @@
+import { expect, jest } from '@jest/globals'
+
 import { syncStorageToDnr } from './index'
 
 describe('sync storage to declarativeNetRequest', () => {

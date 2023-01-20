@@ -1,3 +1,5 @@
+import { expect, jest } from '@jest/globals'
+
 import { h } from 'preact'
 import { render, fireEvent, waitFor } from '@testing-library/preact'
 
