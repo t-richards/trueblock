@@ -4,6 +4,8 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
 
+import { jest } from '@jest/globals'
+
 const RuleActionType = {
   ALLOW: 'allow',
   ALLOW_ALL_REQUESTS: 'allowAllRequests',

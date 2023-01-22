@@ -52,11 +52,19 @@
         "functions": 60
       }
     },
-    "preset": "ts-jest",
+    "extensionsToTreatAsEsm": [".ts", ".tsx"],
+    "preset": "ts-jest/presets/js-with-ts-esm",
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"
     ],
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "transformIgnorePatterns": [
+      "node_modules/(?!preact)"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.jsx?$": "ts-jest"
+    }
   },
   "eslintConfig": {
     "env": {

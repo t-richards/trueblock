@@ -1,6 +1,8 @@
 import { h } from 'preact'
 import { render } from '@testing-library/preact'
 
+import { expect, jest } from '@jest/globals'
+
 import Popup from './'
 
 const stubOneTab = (url: string) => {

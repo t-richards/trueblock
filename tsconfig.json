@@ -7,6 +7,7 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "skipLibCheck": true
   },
   "exclude": [
