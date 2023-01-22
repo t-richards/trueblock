@@ -1,5 +1,3 @@
-import { expect, jest } from '@jest/globals'
-
 import { h } from 'preact'
 import { render } from '@testing-library/preact'
 

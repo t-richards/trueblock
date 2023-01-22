@@ -6,10 +6,11 @@
     "jsx": "react",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
   },
   "exclude": [
-    "node_modules",
-    "**/node_modules/*"
+    "coverage",
+    "node_modules"
   ]
 }

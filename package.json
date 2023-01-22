@@ -1,6 +1,5 @@
 {
   "private": true,
-  "type": "module",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16",
     "@testing-library/preact": "^3.2",
@@ -28,7 +27,7 @@
     "lint": "eslint --ext .ts,.tsx --fix .",
     "lint:ci": "eslint --ext .ts,.tsx .",
     "pack": "cd dist && zip -r trueblock.zip *",
-    "test": "jest --coverage=true --runInBand",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage=true --runInBand",
     "tsc": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
   },
   "jest": {
@@ -53,22 +52,11 @@
         "functions": 60
       }
     },
-    "extensionsToTreatAsEsm": [
-      ".ts"
-    ],
     "preset": "ts-jest",
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"
     ],
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.tsx?$": [
-        "ts-jest",
-        {
-          "useESM": true
-        }
-      ]
-    }
+    "testEnvironment": "jsdom"
   },
   "eslintConfig": {
     "env": {
