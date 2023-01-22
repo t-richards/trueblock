@@ -1,0 +1,76 @@
+name: Browser Extension
+
+on:
+ - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build extension package
+      run: npm run dist
+
+    - name: Upload extension package
+      uses: actions/upload-artifact@v2
+      with:
+        name: trueblock
+        path: dist
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Lint code
+      run: npm run lint:ci
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run tests
+      run: npm run test
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage
+        path: coverage

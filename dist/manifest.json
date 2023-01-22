@@ -1,0 +1,19 @@
+{
+  "name": "TrueBlock",
+  "description": "The simple website blocker.",
+  "version": "0.7.3",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "worker.js"
+  },
+  "action": {
+    "default_title": "TrueBlock",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "activeTab",
+    "declarativeNetRequest",
+    "storage"
+  ]
+}

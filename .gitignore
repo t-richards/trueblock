@@ -1,0 +1,9 @@
+# Dev
+coverage/
+node_modules/
+
+# Dist
+dist/*.css
+dist/*.js
+dist/*.map
+dist/*.zip
