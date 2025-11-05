@@ -1,2 +1,2 @@
-build: npm run build:dev
-tsc: npm run tsc
+build: bun run build:dev
+tsc: bun run tsc

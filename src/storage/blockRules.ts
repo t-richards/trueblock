@@ -44,7 +44,7 @@ export async function updateRule(domain: string, note: string, enabled: boolean)
     id,
     domain,
     note,
-    enabled
+    enabled,
   }
 
   // Save the rule.

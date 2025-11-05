@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 
 import { fetchRule, updateRule } from '../../storage/blockRules'
 
@@ -8,7 +8,7 @@ const Popup = () => {
   const [note, setNote] = useState('')
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       // Get the current tab domain
       const tabs = await chrome.tabs.query({ active: true })
       const { hostname } = new URL(tabs[0].url)
@@ -67,7 +67,8 @@ const Popup = () => {
             placeholder="e.g.,
 - Dark patterns
 - Sketchy advertisements
-- Scummy business model" />
+- Scummy business model"
+          />
         </fieldset>
 
         <fieldset>

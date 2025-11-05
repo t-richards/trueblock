@@ -30,15 +30,14 @@ You can visit the extension options page to view this note later, to remind your
 
 System requirements:
 
- - Node.js `>= 18.6.0`
- - NPM `>= 8.14`
+ - [Bun](https://bun.com/) `>= 1.3.1`
  - [Overmind](https://github.com/DarthSim/overmind)
 
 Getting started:
 
 1. Install dependencies
     ```bash
-    npm install
+    bun install
     ```
 
 2. Run build watcher

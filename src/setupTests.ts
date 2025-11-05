@@ -1,10 +1,8 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom/extend-expect'
+import { afterEach, beforeEach, mock } from 'bun:test'
+import { GlobalRegistrator } from '@happy-dom/global-registrator'
+import { cleanup } from '@testing-library/preact'
 
-import { jest } from '@jest/globals'
+GlobalRegistrator.register()
 
 const RuleActionType = {
   ALLOW: 'allow',
@@ -12,7 +10,7 @@ const RuleActionType = {
   BLOCK: 'block',
   MODIFY_HEADERS: 'modifyHeaders',
   REDIRECT: 'redirect',
-  UPGRADE_SCHEME: 'upgradeScheme'
+  UPGRADE_SCHEME: 'upgradeScheme',
 }
 
 const ResourceType = {
@@ -30,36 +28,38 @@ const ResourceType = {
   WEBBUNDLE: 'webbundle',
   WEBSOCKET: 'websocket',
   WEBTRANSPORT: 'webtransport',
-  XMLHTTPREQUEST: 'xmlhttprequest'
+  XMLHTTPREQUEST: 'xmlhttprequest',
 }
 
 // n.b. packages like chrome-mock, chrome-jest-mock, jest-chrome, etc.
 // are not suitable for our tests because they are too outdated and/or
 // do not provide the subset of chrome APIs we need.
-global.beforeEach(() => {
+beforeEach(() => {
   Object.assign(global, {
     chrome: {
       tabs: {
-        query: jest.fn(async () => []) // no tabs
+        query: mock(async () => []), // no tabs
       },
       storage: {
         sync: {
-          get: jest.fn(async () => ({})), // empty storage
-          set: jest.fn(),
-          remove: jest.fn()
-        }
+          get: mock(async () => ({})), // empty storage
+          set: mock(),
+          remove: mock(),
+        },
       },
       declarativeNetRequest: {
         RuleActionType,
         ResourceType,
-        getDynamicRules: jest.fn(async () => []), // empty DNR rules
-        updateDynamicRules: jest.fn()
-      }
-    }
+        getDynamicRules: mock(async () => []), // empty DNR rules
+        updateDynamicRules: mock(),
+      },
+    },
   })
 })
 
-global.afterEach(() => {
+afterEach(() => {
+  cleanup()
+  document.body.innerHTML = ''
   global.chrome = undefined
   delete global.chrome
 })

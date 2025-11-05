@@ -1,4 +1,4 @@
-import { jest, expect } from '@jest/globals'
+import { describe, expect, it, mock } from 'bun:test'
 
 import { syncStorageToDnr } from './index'
 
@@ -13,8 +13,8 @@ describe('sync storage to declarativeNetRequest', () => {
 
   describe('with one new item in storage', () => {
     it('creates one new DNR rule', async () => {
-      chrome.storage.sync.get = jest.fn(async () => ({
-        'example.net': { id: 3, enabled: true }
+      chrome.storage.sync.get = mock(async () => ({
+        'example.net': { id: 3, enabled: true },
       }))
 
       await syncStorageToDnr()
@@ -25,28 +25,30 @@ describe('sync storage to declarativeNetRequest', () => {
             expect.objectContaining({
               id: 3,
               condition: expect.objectContaining({
-                requestDomains: ['example.net']
-              })
-            })
-          ])
-        })
+                requestDomains: ['example.net'],
+              }),
+            }),
+          ]),
+        }),
       )
     })
   })
 
   describe('with one existing DNR rule that matches storage', () => {
     it('does nothing', async () => {
-      chrome.storage.sync.get = jest.fn(async () => ({
-        'example.net': { id: 3, enabled: true }
+      chrome.storage.sync.get = mock(async () => ({
+        'example.net': { id: 3, enabled: true },
       }))
 
-      chrome.declarativeNetRequest.getDynamicRules = jest.fn(async () => [{
-        id: 3,
-        action: {
-          type: chrome.declarativeNetRequest.RuleActionType.BLOCK
+      chrome.declarativeNetRequest.getDynamicRules = mock(async () => [
+        {
+          id: 3,
+          action: {
+            type: chrome.declarativeNetRequest.RuleActionType.BLOCK,
+          },
+          condition: { requestDomains: ['example.net'] },
         },
-        condition: { requestDomains: ['example.net'] }
-      }])
+      ])
 
       await syncStorageToDnr()
 
@@ -56,18 +58,20 @@ describe('sync storage to declarativeNetRequest', () => {
 
   describe('with one existing DNR rule and empty storage', () => {
     it('removes the unused rule', async () => {
-      chrome.declarativeNetRequest.getDynamicRules = jest.fn(async () => [{
-        id: 3,
-        action: {
-          type: chrome.declarativeNetRequest.RuleActionType.BLOCK
+      chrome.declarativeNetRequest.getDynamicRules = mock(async () => [
+        {
+          id: 3,
+          action: {
+            type: chrome.declarativeNetRequest.RuleActionType.BLOCK,
+          },
+          condition: { requestDomains: ['example.net'] },
         },
-        condition: { requestDomains: ['example.net'] }
-      }])
+      ])
 
       await syncStorageToDnr()
 
       expect(chrome.declarativeNetRequest.updateDynamicRules).toHaveBeenCalledWith({
-        removeRuleIds: [ 3 ]
+        removeRuleIds: [3],
       })
     })
   })

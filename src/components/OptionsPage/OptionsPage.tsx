@@ -1,8 +1,12 @@
 import { h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
-
-import { BlockRuleStorage, deleteRule, fetchAllRules, updateRule } from '../../storage/blockRules'
+import { useEffect, useState } from 'preact/hooks'
 import { TrashIcon } from '../../icons/outline'
+import {
+  type BlockRuleStorage,
+  deleteRule,
+  fetchAllRules,
+  updateRule,
+} from '../../storage/blockRules'
 
 const OptionsPage = () => {
   // New rule form
@@ -22,7 +26,7 @@ const OptionsPage = () => {
   // Rules storage
   const [rules, setRules] = useState<BlockRuleStorage>({})
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       const result = await fetchAllRules()
       setRules(result)
     })()
@@ -61,7 +65,7 @@ const OptionsPage = () => {
       <section>
         <h2>Blocked sites</h2>
         <figure>
-          <table role="grid">
+          <table>
             <thead>
               <tr>
                 <th scope="col">Enabled</th>
@@ -74,11 +78,29 @@ const OptionsPage = () => {
               {Object.entries(rules).map(([_domain, rule]) => (
                 <tr id={`row_${rule.id}`} key={rule.id}>
                   <th scope="row">
-                    <input data-domain={rule.domain} type="checkbox" role="switch" id={rule.id.toString()} checked={rule.enabled} onClick={handleToggle} />
+                    <input
+                      data-domain={rule.domain}
+                      type="checkbox"
+                      role="switch"
+                      id={rule.id.toString()}
+                      aria-checked={rule.enabled}
+                      checked={rule.enabled}
+                      onClick={handleToggle}
+                    />
                   </th>
                   <td>{rule.domain}</td>
                   <td>{rule.note}</td>
-                  <td><button aria-label="Delete" data-domain={rule.domain} class="outline contrast action" onClick={handleDelete}><TrashIcon /></button></td>
+                  <td>
+                    <button
+                      type="button"
+                      aria-label="Delete"
+                      data-domain={rule.domain}
+                      class="outline contrast action"
+                      onClick={handleDelete}
+                    >
+                      <TrashIcon />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -90,11 +112,25 @@ const OptionsPage = () => {
         <form onSubmit={handleNewSiteSubmit}>
           <fieldset>
             <label for="domain">Domain</label>
-            <input type="text" id="domain" name="domain" placeholder="example.net" value={domain} onInput={handleDomainInput} />
+            <input
+              type="text"
+              id="domain"
+              name="domain"
+              placeholder="example.net"
+              value={domain}
+              onInput={handleDomainInput}
+            />
           </fieldset>
           <fieldset>
             <label for="note">Note</label>
-            <input type="text" id="note" name="note" placeholder="I do not like this website" value={note} onInput={handleNoteInput} />
+            <input
+              type="text"
+              id="note"
+              name="note"
+              placeholder="I do not like this website"
+              value={note}
+              onInput={handleNoteInput}
+            />
             <button type="submit">Add site to blocklist</button>
           </fieldset>
         </form>

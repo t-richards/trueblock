@@ -1,23 +1,23 @@
-@import '@picocss/pico/css/pico.css';
+@import "@picocss/pico/css/pico.css";
 
 .popup {
-    width: 600px;
-    height: 600px;
+  width: 600px;
+  height: 600px;
 }
 
 .icon {
-    height: 1.5rem;
-    width: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 /* Extras borrowed from docs page */
-a[role=button] {
-    margin-right: calc(var(--spacing) * .5);
+a[role="button"] {
+  margin-right: calc(var(--spacing) * 0.5);
 }
 
 .action {
-    height: 2rem;
-    width: 2rem;
-    padding: 0;
-    margin: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  margin: 0.5rem;
 }

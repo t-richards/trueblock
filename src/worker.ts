@@ -4,7 +4,7 @@ import { syncStorageToDnr } from './background'
 // between storage and the declarativeNetRequest rules.
 chrome.storage.onChanged.addListener(syncStorageToDnr)
 chrome.declarativeNetRequest.setExtensionActionOptions({
-  displayActionCountAsBadgeText: true
+  displayActionCountAsBadgeText: true,
 })
 
 syncStorageToDnr()

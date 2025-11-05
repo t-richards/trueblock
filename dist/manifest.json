@@ -11,9 +11,5 @@
     "default_popup": "popup.html"
   },
   "options_page": "options.html",
-  "permissions": [
-    "activeTab",
-    "declarativeNetRequest",
-    "storage"
-  ]
+  "permissions": ["activeTab", "declarativeNetRequest", "storage"]
 }
