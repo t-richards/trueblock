@@ -1,16 +1,20 @@
 import { h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 
-import { fetchRule, updateRule } from '../../storage/blockRules'
+import { deleteRule, fetchRule, updateRule } from '../../storage/blockRules'
 
 const Popup = () => {
   const [domain, setDomain] = useState('')
   const [note, setNote] = useState('')
+  const [isBlocked, setIsBlocked] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle')
 
   useEffect(() => {
     ;(async () => {
       // Get the current tab domain
       const tabs = await chrome.tabs.query({ active: true })
+      if (!tabs[0]) return
+
       const { hostname } = new URL(tabs[0].url)
       setDomain(hostname)
 
@@ -18,6 +22,7 @@ const Popup = () => {
       const rule = await fetchRule(hostname)
       if (rule !== null) {
         setNote(rule.note)
+        setIsBlocked(true)
       }
     })()
   }, [])
@@ -32,14 +37,53 @@ const Popup = () => {
     setNote(target.value)
   }
 
+  const reloadCurrentTab = async () => {
+    const tabs = await chrome.tabs.query({ active: true })
+    if (tabs[0]?.id) {
+      await chrome.tabs.reload(tabs[0].id, { bypassCache: true })
+    }
+  }
+
   const handleFormSubmit = async (evt: Event) => {
     evt.preventDefault()
     await updateRule(domain, note, true)
+    setIsBlocked(true)
+    setSubmitStatus('success')
+    setTimeout(() => setSubmitStatus('idle'), 2000)
+    await reloadCurrentTab()
+  }
+
+  const handleUnblock = async () => {
+    await deleteRule(domain)
+    setIsBlocked(false)
+    setNote('')
+    await reloadCurrentTab()
+  }
+
+  const submitButtonText = () => {
+    if (submitStatus === 'success') {
+      return 'Saved!'
+    }
+
+    if (isBlocked) {
+      return 'Save changes'
+    }
+
+    return 'Add site to blocklist'
+  }
+
+  const submitButtonClass = () => {
+    const baseClasses = ['strong']
+    if (submitStatus === 'success') {
+      baseClasses.push('secondary')
+    }
+
+    return baseClasses.join(' ')
   }
 
   return (
     <main class="container">
-      <h3>Block this website</h3>
+      <h3>{isBlocked ? 'Edit blocked website' : 'Block this website'}</h3>
 
       <form id="block-a-site" onSubmit={handleFormSubmit}>
         <fieldset>
@@ -72,9 +116,17 @@ const Popup = () => {
         </fieldset>
 
         <fieldset>
-          <input class="strong" type="submit" value="Add site to blocklist" />
+          <button type="submit" class={submitButtonClass()} value={submitButtonText()} />
         </fieldset>
       </form>
+
+      {isBlocked && (
+        <fieldset>
+          <button type="button" onClick={handleUnblock}>
+            Unblock this site
+          </button>
+        </fieldset>
+      )}
     </main>
   )
 }

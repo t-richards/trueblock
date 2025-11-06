@@ -54,10 +54,8 @@ Getting started:
 
 General
 
- - [ ] Show "Success" when adding new site to blocklist
- - [ ] Form validation states
- - [ ] Add tests :)
- - [ ] Mutation tests
+ - [x] Show "Success" when adding new site to blocklist
+ - [ ] Form validation?
 
 ## License
 

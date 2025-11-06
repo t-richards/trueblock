@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "bun build --target browser --outdir dist --minify src/worker.ts src/popup.tsx src/options.tsx src/app.css",
-    "build:dev": "bun build --target browser --outdir dist --sourcemap=inline src/worker.ts src/popup.tsx src/options.tsx src/app.css --watch",
+    "build:dev": "bun build --target browser --outdir dist --sourcemap=inline --watch src/worker.ts src/popup.tsx src/options.tsx src/app.css",
     "clean": "rm -f dist/*.js dist/*.css dist/*.map dist/*.zip",
     "dist": "bun run clean && bun run build",
     "lint": "biome check --write",
