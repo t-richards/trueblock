@@ -16,7 +16,9 @@ export async function fetchAllRules(): Promise<BlockRuleStorage> {
   const rules = await chrome.storage.sync.get()
   // Exclude the non-rule ID sequence.
   delete rules[ID_SEQUENCE_KEY]
-  return rules
+
+  // TODO(tom): Remove 'as' cast
+  return rules as BlockRuleStorage
 }
 
 // Retrieves a single block rule from storage.
@@ -25,7 +27,9 @@ export async function fetchRule(domain: string): Promise<BlockRule | null> {
   if (typeof rules[domain] === 'undefined') {
     return null
   }
-  return rules[domain]
+
+  // TODO(tom): Remove 'as' cast
+  return rules[domain] as BlockRule
 }
 
 // Saves a single block rule to storage.

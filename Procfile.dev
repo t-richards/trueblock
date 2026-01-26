@@ -1,2 +1,2 @@
 build: bun run build:dev
-tsc: bun run tsc
+tsc: bun run tsc:dev

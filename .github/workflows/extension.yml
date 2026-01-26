@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout source
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Setup bun
       uses: oven-sh/setup-bun@v2
@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Checkout source
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Setup bun
       uses: oven-sh/setup-bun@v2
@@ -36,14 +36,16 @@ jobs:
       run: bun install
 
     - name: Lint code
-      run: bun run lint:ci
+      run: |
+        bun run lint:ci
+        bun run tsc
 
   test:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout source
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Setup bun
       uses: oven-sh/setup-bun@v2

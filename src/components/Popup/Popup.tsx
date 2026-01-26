@@ -116,7 +116,9 @@ const Popup = () => {
         </fieldset>
 
         <fieldset>
-          <button type="submit" class={submitButtonClass()} value={submitButtonText()} />
+          <button type="submit" class={submitButtonClass()}>
+            {submitButtonText()}
+          </button>
         </fieldset>
       </form>
 
