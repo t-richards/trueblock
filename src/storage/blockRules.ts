@@ -13,23 +13,21 @@ export type BlockRuleStorage = {
 
 // Retrieves all block rules from storage.
 export async function fetchAllRules(): Promise<BlockRuleStorage> {
-  const rules = await chrome.storage.sync.get()
+  const rules = await chrome.storage.sync.get<BlockRuleStorage>()
   // Exclude the non-rule ID sequence.
   delete rules[ID_SEQUENCE_KEY]
 
-  // TODO(tom): Remove 'as' cast
-  return rules as BlockRuleStorage
+  return rules
 }
 
 // Retrieves a single block rule from storage.
 export async function fetchRule(domain: string): Promise<BlockRule | null> {
-  const rules = await chrome.storage.sync.get([domain])
-  if (typeof rules[domain] === 'undefined') {
+  const rules = await chrome.storage.sync.get<Record<string, BlockRule>>([domain])
+  if (rules[domain] === undefined) {
     return null
   }
 
-  // TODO(tom): Remove 'as' cast
-  return rules[domain] as BlockRule
+  return rules[domain]
 }
 
 // Saves a single block rule to storage.

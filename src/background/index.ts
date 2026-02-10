@@ -1,5 +1,4 @@
-import type { BlockRuleStorage } from '../storage/blockRules'
-import { ID_SEQUENCE_KEY } from '../storage/sequence'
+import { fetchAllRules, type BlockRuleStorage } from '../storage/blockRules'
 
 const dnrBlockRule = (id: number, domain: string): chrome.declarativeNetRequest.Rule => {
   return {
@@ -85,8 +84,7 @@ const applyRulesDiff = async (
 
 const syncStorageToDnr = async () => {
   // first get all rules from storage
-  const desiredRules = (await chrome.storage.sync.get()) as BlockRuleStorage
-  delete desiredRules[ID_SEQUENCE_KEY]
+  const desiredRules = await fetchAllRules()
 
   // then see which ones already exist
   const existingRules = await chrome.declarativeNetRequest.getDynamicRules()
