@@ -35,7 +35,7 @@ const ResourceType = {
 // are not suitable for our tests because they are too outdated and/or
 // do not provide the subset of chrome APIs we need.
 beforeEach(() => {
-  Object.assign(global, {
+  Object.assign(globalThis, {
     chrome: {
       tabs: {
         query: mock(async () => []), // no tabs
@@ -60,6 +60,6 @@ beforeEach(() => {
 afterEach(() => {
   cleanup()
   document.body.innerHTML = ''
-  global.chrome = undefined
-  delete global.chrome
+  globalThis.chrome = undefined
+  delete globalThis.chrome
 })

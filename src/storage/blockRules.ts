@@ -37,7 +37,7 @@ export async function updateRule(domain: string, note: string, enabled: boolean)
   // Check if the rule exists.
   const existingRule = await fetchRule(domain)
   let id = null
-  if (existingRule !== null) {
+  if (existingRule) {
     id = existingRule.id
   } else {
     id = await getNextID()
