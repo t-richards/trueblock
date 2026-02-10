@@ -87,32 +87,34 @@ const Popup = () => {
 
       <form id="block-a-site" onSubmit={handleFormSubmit}>
         <fieldset>
-          <label for="domain">Domain</label>
-          <input
-            type="text"
-            id="domain"
-            name="domain"
-            placeholder="example.net"
-            value={domain}
-            onInput={handleDomainInput}
-            required
-          />
+          <label>
+            Domain
+            <input
+              type="text"
+              name="domain"
+              placeholder="example.net"
+              value={domain}
+              onInput={handleDomainInput}
+              required
+            />
+          </label>
         </fieldset>
 
         <fieldset>
-          <label for="note">Note (Optional)</label>
-          <textarea
-            rows={5}
-            cols={40}
-            id="note"
-            name="note"
-            value={note}
-            onInput={handleNoteInput}
-            placeholder="e.g.,
+          <label>
+            Note (Optional)
+            <textarea
+              rows={5}
+              cols={40}
+              name="note"
+              value={note}
+              onInput={handleNoteInput}
+              placeholder="e.g.,
 - Dark patterns
 - Sketchy advertisements
 - Scummy business model"
-          />
+            />
+          </label>
         </fieldset>
 
         <fieldset>

@@ -111,26 +111,28 @@ const OptionsPage = () => {
         <h2>Block a new site</h2>
         <form onSubmit={handleNewSiteSubmit}>
           <fieldset>
-            <label for="domain">Domain</label>
-            <input
-              type="text"
-              id="domain"
-              name="domain"
-              placeholder="example.net"
-              value={domain}
-              onInput={handleDomainInput}
-            />
+            <label>
+              Domain
+              <input
+                type="text"
+                name="domain"
+                placeholder="example.net"
+                value={domain}
+                onInput={handleDomainInput}
+              />
+            </label>
           </fieldset>
           <fieldset>
-            <label for="note">Note</label>
-            <input
-              type="text"
-              id="note"
-              name="note"
-              placeholder="I do not like this website"
-              value={note}
-              onInput={handleNoteInput}
-            />
+            <label>
+              Note
+              <input
+                type="text"
+                name="note"
+                placeholder="I do not like this website"
+                value={note}
+                onInput={handleNoteInput}
+              />
+            </label>
             <button type="submit">Add site to blocklist</button>
           </fieldset>
         </form>
