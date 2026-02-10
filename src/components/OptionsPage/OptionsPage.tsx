@@ -112,7 +112,7 @@ const OptionsPage = () => {
         <form onSubmit={handleNewSiteSubmit}>
           <fieldset>
             <label>
-              Domain
+              <span>Domain</span>
               <input
                 type="text"
                 name="domain"
@@ -124,7 +124,7 @@ const OptionsPage = () => {
           </fieldset>
           <fieldset>
             <label>
-              Note
+              <span>Note</span>
               <input
                 type="text"
                 name="note"

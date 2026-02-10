@@ -88,7 +88,7 @@ const Popup = () => {
       <form id="block-a-site" onSubmit={handleFormSubmit}>
         <fieldset>
           <label>
-            Domain
+            <span>Domain</span>
             <input
               type="text"
               name="domain"
@@ -102,7 +102,7 @@ const Popup = () => {
 
         <fieldset>
           <label>
-            Note (Optional)
+            <span>Note (Optional)</span>
             <textarea
               rows={5}
               cols={40}
