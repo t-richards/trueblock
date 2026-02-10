@@ -21,53 +21,11 @@ const dnrBlockRule = (id: number, domain: string): chrome.declarativeNetRequest.
         chrome.declarativeNetRequest.ResourceType.CSP_REPORT,
         chrome.declarativeNetRequest.ResourceType.MEDIA,
         chrome.declarativeNetRequest.ResourceType.WEBSOCKET,
+        chrome.declarativeNetRequest.ResourceType.WEBTRANSPORT,
+        chrome.declarativeNetRequest.ResourceType.WEBBUNDLE,
         chrome.declarativeNetRequest.ResourceType.OTHER,
       ],
     },
-  }
-}
-
-const addRemainingRules = async (
-  desiredRules: BlockRuleStorage,
-  existingRules: chrome.declarativeNetRequest.Rule[],
-) => {
-  const rulesToAdd: chrome.declarativeNetRequest.Rule[] = []
-  for (const [domain, rule] of Object.entries(desiredRules)) {
-    if (existingRules.find((r) => r.id === rule.id) === undefined && rule.enabled) {
-      rulesToAdd.push(dnrBlockRule(rule.id, domain))
-    }
-  }
-
-  if (rulesToAdd.length > 0) {
-    await chrome.declarativeNetRequest.updateDynamicRules({
-      addRules: rulesToAdd,
-    })
-  }
-}
-
-const deleteUnusedRules = async (
-  storageRules: BlockRuleStorage,
-  existingRules: chrome.declarativeNetRequest.Rule[],
-) => {
-  const existingRuleIds = new Set<number>()
-  const storageRuleIds = new Set<number>()
-
-  for (const existingRule of existingRules) {
-    existingRuleIds.add(existingRule.id)
-  }
-
-  for (const key in storageRules) {
-    const rule = storageRules[key]
-    if (rule.enabled) {
-      storageRuleIds.add(rule.id)
-    }
-  }
-
-  const difference = new Set<number>([...existingRuleIds].filter((x) => !storageRuleIds.has(x)))
-  if (difference.size > 0) {
-    await chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: [...difference],
-    })
   }
 }
 
@@ -75,11 +33,30 @@ const applyRulesDiff = async (
   storageRules: BlockRuleStorage,
   existingRules: chrome.declarativeNetRequest.Rule[],
 ) => {
-  // delete rules that are no longer in storage
-  deleteUnusedRules(storageRules, existingRules)
+  const desiredRuleIds = new Set<number>()
+  for (const rule of Object.values(storageRules)) {
+    if (rule.enabled) {
+      desiredRuleIds.add(rule.id)
+    }
+  }
 
-  // construct rules that are not in storage
-  addRemainingRules(storageRules, existingRules)
+  const existingRuleIds = new Set(existingRules.map((r) => r.id))
+
+  const removeRuleIds = existingRules.filter((r) => !desiredRuleIds.has(r.id)).map((r) => r.id)
+
+  const addRules: chrome.declarativeNetRequest.Rule[] = []
+  for (const [domain, rule] of Object.entries(storageRules)) {
+    if (rule.enabled && !existingRuleIds.has(rule.id)) {
+      addRules.push(dnrBlockRule(rule.id, domain))
+    }
+  }
+
+  if (removeRuleIds.length > 0 || addRules.length > 0) {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      ...(removeRuleIds.length > 0 && { removeRuleIds }),
+      ...(addRules.length > 0 && { addRules }),
+    })
+  }
 }
 
 const syncStorageToDnr = async () => {
