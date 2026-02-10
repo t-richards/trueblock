@@ -1,4 +1,4 @@
-import { fetchAllRules, type BlockRuleStorage } from '../storage/blockRules'
+import { type BlockRuleStorage, fetchAllRules } from '../storage/blockRules'
 
 const dnrBlockRule = (id: number, domain: string): chrome.declarativeNetRequest.Rule => {
   return {
