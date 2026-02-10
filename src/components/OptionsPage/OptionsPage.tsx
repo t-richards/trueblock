@@ -14,12 +14,18 @@ const OptionsPage = () => {
   const [note, setNote] = useState('')
 
   const handleDomainInput = (evt: Event) => {
-    const target = evt.target as HTMLInputElement
+    const target = evt.target
+    if (!(target instanceof HTMLInputElement)) {
+      return
+    }
     setDomain(target.value)
   }
 
   const handleNoteInput = (evt: Event) => {
-    const target = evt.target as HTMLInputElement
+    const target = evt.target
+    if (!(target instanceof HTMLInputElement)) {
+      return
+    }
     setNote(target.value)
   }
 
@@ -42,7 +48,10 @@ const OptionsPage = () => {
 
   // table
   const handleToggle = async (evt: Event) => {
-    const target = evt.currentTarget as HTMLInputElement
+    const target = evt.currentTarget
+    if (!(target instanceof HTMLInputElement)) {
+      return
+    }
     const domain = target.dataset.domain
     const newRules = { ...rules }
     newRules[domain].enabled = !newRules[domain].enabled
@@ -52,7 +61,10 @@ const OptionsPage = () => {
   }
 
   const handleDelete = async (evt: Event) => {
-    const target = evt.currentTarget as HTMLButtonElement
+    const target = evt.currentTarget
+    if (!(target instanceof HTMLButtonElement)) {
+      return
+    }
     const domain = target.dataset.domain
     await deleteRule(domain)
     const newRules = { ...rules }

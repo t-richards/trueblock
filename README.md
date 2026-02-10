@@ -30,7 +30,7 @@ You can visit the extension options page to view this note later, to remind your
 
 System requirements:
 
- - [Bun](https://bun.com/) `>= 1.3.1`
+ - [Bun](https://bun.com/) `>= 1.3.8`
  - [Overmind](https://github.com/DarthSim/overmind)
 
 Getting started:
@@ -52,10 +52,7 @@ Getting started:
 
 ## Roadmap
 
-General
-
- - [x] Show "Success" when adding new site to blocklist
- - [ ] Form validation?
+ - [ ] More reliable refresh-tab-on-save functionality
 
 ## License
 

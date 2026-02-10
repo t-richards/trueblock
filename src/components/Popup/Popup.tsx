@@ -28,12 +28,18 @@ const Popup = () => {
   }, [])
 
   const handleDomainInput = (evt: Event) => {
-    const target = evt.target as HTMLInputElement
+    const target = evt.target
+    if (!(target instanceof HTMLInputElement)) {
+      return
+    }
     setDomain(target.value)
   }
 
   const handleNoteInput = (evt: Event) => {
-    const target = evt.target as HTMLInputElement
+    const target = evt.target
+    if (!(target instanceof HTMLInputElement)) {
+      return
+    }
     setNote(target.value)
   }
 
